@@ -1,0 +1,57 @@
+---
+const {
+  reversed,
+  title,
+  list = ["", "", "", ""],
+  link,
+  clases,
+  image,
+} = Astro.props;
+---
+
+<section
+  class={`grid grid-cols-3 ${clases} gap-4  items-start justify-center col-span-3`}
+>
+  <section
+    class={`flex flex-col gap-4 px-8 h-full rounded-lg items-start justify-center col-span-2 row-start-1 ${
+      reversed ? "col-start-1" : "col-start-2"
+    }`}
+  >
+    <h3 class="text-4xl font-bold text-white">
+      {title}
+    </h3>
+    <ul class="text-white flex flex-col gap-0 list-disc px-8">
+      {list.map((item: string) => <li>{item}</li>)}
+    </ul>
+
+    <div class="w-full flex flex-row items-center justify-end">
+      <a
+        href={link}
+        class="bg-white rounded-full text-black w-64 text-2xl flex flex-row items-center justify-end p-2 text-end"
+        >Conocer más<span
+          class="text-white deep-blue ml-2 rounded-full flex flex-col items-center justify-center"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width={2}
+            stroke="currentColor"
+            class="size-8"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+          </svg>
+        </span></a
+      >
+    </div>
+  </section>
+  <div
+    class={`p-0 col-span-1 h-90 overflow-hidden row-start-1 ${
+      reversed ? "col-start-2" : "col-start-1"
+    }`}
+  >
+    <img src={image} alt={title} class="h-96 object-cover w-full" />
+  </div>
+</section>

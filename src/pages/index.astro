@@ -1,11 +1,119 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Card from "../components/Card.astro";
+import Layout from "../layouts/Layout.astro";
+const alquiler = "/5.svg";
+const geotecnia = "/3.svg";
+const infraestructura = "/2.svg";
+const header = "/1.svg";
+const bgImgae = "/6.svg";
 ---
 
 <Layout>
-	<Welcome />
+  <section class="relative overflow-hidden">
+    <span
+      class="absolute bg-gradient-to-t from-[#102636] via-transparent to-transparent z-[9999] block w-screen h-screen"
+    ></span>
+    <img
+      src={header}
+      alt="header"
+      class="object-fill h-screen w-screen object-center"
+    />
+  </section>
+  <section class="flex flex-col gap-4 px-64 pb-48 deep-blue z-90 relative">
+    <section class="grid grid-cols-5 h-dvh">
+      <div class="col-span-3 grid grid-rows-2">
+        <div class="text-white items-center justify-center flex flex-col">
+          <p class="text-2xl px-30">
+            Somos una empresa contratista comprometida con el desarrollo
+            sostenible y eficiente de cada proyecto. Durante nuestros once años
+            de experiencia en el sector, hemos venido ofreciendo servicios
+            innovadores, cumpliendo rigurosas normas y protocolos de seguridad.
+          </p>
+        </div>
+        <div class="cyan flex flex-col items-start px-24 justify-center">
+          <h2 class="text-4xl font-bold text-white">INFRAESTRUCTURA</h2>
+          <ul class="text-white flex flex-col gap-0 list-disc px-8 mt-4">
+            <li>Obras civiles, hidráulicas, sanitarias y viales.</li>
+            <li>Movimientos de tierra y excavaciones</li>
+            <li>Fabricación de estructuras metálicas</li>
+            <li>Montajes industriales</li>
+            <li>Trabajos en altura</li>
+            <li>Gestión integral de proyectos</li>
+          </ul>
+          <div class="w-full flex flex-row items-center justify-end mt-8">
+            <a
+              href={""}
+              class="bg-white rounded-full text-black w-64 text-2xl flex flex-row items-center justify-end p-2 text-end"
+              >Conocer más<span
+                class="text-white deep-blue ml-2 rounded-full flex flex-col items-center justify-center"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width={2}
+                  stroke="currentColor"
+                  class="size-8"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+                </svg>
+              </span></a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-span-2 relative">
+        <img
+          src={infraestructura}
+          alt="Infraestructura"
+          class="object-cover h-full object-center"
+        />
+      </div>
+    </section>
+
+    <Card
+      reversed={false}
+      title="GEOTECNIA"
+      list={[
+        "Mejora de suelos",
+        "Estabilización y protección de taludes",
+        "Cimentaciones profundas",
+        "Anclajes postensados",
+        "Estabilidad de excavaciones superficiales",
+      ]}
+      clases="deep-purple"
+      image={geotecnia}
+    />
+    <Card
+      reversed={true}
+      title="MANTENIMIENTO"
+      list={[
+        "Pintado de estructuras",
+        "Habilitación y montaje de tuberías de HDPE",
+        "Vías de acceso",
+        "Faja transportadora",
+        "Canales de coronación",
+        "Traslado de materiales con equipos propios",
+      ]}
+      clases="soft-purple"
+    />
+    <Card
+      reversed={false}
+      title="ALQUILER DE EQUIPOS"
+      list={[
+        "Camiones grúa: 12Tn; 20 Tn; 32 Tn.",
+        "Retroexacadoras John Deere",
+        "Minicargadores",
+        "Camiones Volquete",
+        "Torres de Iluminación",
+        "Grupos electrógenos",
+      ]}
+      image={alquiler}
+      clases="cyan mb-16"
+    />
+	
+   
+  </section>
 </Layout>

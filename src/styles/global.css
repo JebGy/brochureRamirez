@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+.deep-purple{
+    background-color: #476ACE;
+}
+
+.soft-purple{
+    background-color: #669BBD;
+}
+
+.cyan{
+    background-color: #2DB4A5;
+}
+
+.deep-blue{
+    background-color: #102636;
+}
