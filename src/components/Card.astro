@@ -10,24 +10,24 @@ const {
 ---
 
 <section
-  class={`grid grid-cols-3 ${clases}  items-start justify-center col-span-3 mb-8`}
+  class={`grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 lg:grid-rows-1 md:grid-rows-1 grid-rows-2 ${clases} items-start justify-center col-span-3 mb-8`}
 >
   <section
-    class={`flex flex-col gap-4 px-8 lg:pt-10 pt-16 h-full rounded-lg items-start  col-span-2 row-start-1 ${
+    class={`flex flex-col gap-4 px-8 lg:pt-10 pt-16 h-full rounded-lg items-start  lg:col-span-2 md:col-span-2 col-span-1 row-start-1 ${
       reversed ? "col-start-1" : "col-start-2"
     }`}
   >
-    <h3 class="lg:text-4xl text-2xl font-bold Altone text-white">
+    <h3 class="lg:text-4xl md:text-2xl text-sm font-bold Altone text-white">
       {title}
     </h3>
-    <ul class="text-white flex flex-col gap-0 list-disc px-8">
-      {list.map((item: string) => <li class="lg:text-xl text-md">{item}</li>)}
+    <ul class="text-white flex flex-col gap-0 list-disc lg:px-8 md:px-8 px-1">
+      {list.map((item: string) => <li class="lg:text-xl md:text-sm text-xs ">{item}</li>)}
     </ul>
 
-    <div class="w-full flex flex-row items-center justify-end">
+    <div class="w-full flex flex-row items-center justify-end mt-4 ">
       <a
         href={link}
-        class="bg-white rounded-full text-black lg:w-64 w-48 lg:text-2xl text-xl flex flex-row items-center justify-end p-2 text-end"
+        class="bg-white rounded-full text-black lg:w-64 w-48 lg:text-2xl md:text-xl text-sm  flex flex-row items-center justify-end p-2 text-end"
         >Conocer más<span
           class="text-white deep-blue ml-2 rounded-full flex flex-col items-center justify-center"
           ><svg
@@ -48,8 +48,8 @@ const {
     </div>
   </section>
   <div
-    class={`p-0 col-span-1 h-90 overflow-hidden row-start-1 ${
-      reversed ? "col-start-3" : "col-start-1"
+    class={`p-0 lg:col-span-1 md:col-span-1 col-span-1 h-90 overflow-hidden row-start-1 ${
+      reversed ? "lg:col-start-3 lg:row-start-1 md:col-start-3 md:row-start-1 row-start-2" : "lg:col-start-1 lg:row-start-1 md:col-start-1 md:row-start-1 col-start-2 row-start-2"
     }`}
   >
     <img
