@@ -13,7 +13,7 @@ const {
   class={`grid grid-cols-3 ${clases}  items-start justify-center col-span-3`}
 >
   <section
-    class={`flex flex-col gap-4 px-8 h-full rounded-lg items-start justify-center col-span-2 row-start-1 ${
+    class={`flex flex-col gap-4 px-8 lg:pt-10 pt-16 h-full rounded-lg items-start  col-span-2 row-start-1 ${
       reversed ? "col-start-1" : "col-start-2"
     }`}
   >
@@ -21,7 +21,7 @@ const {
       {title}
     </h3>
     <ul class="text-white flex flex-col gap-0 list-disc px-8">
-      {list.map((item: string) => <li class="lg:text-xl text-lg">{item}</li>)}
+      {list.map((item: string) => <li class="lg:text-xl text-md">{item}</li>)}
     </ul>
 
     <div class="w-full flex flex-row items-center justify-end">
