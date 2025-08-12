@@ -52,6 +52,12 @@ const {
       reversed ? "col-start-3" : "col-start-1"
     }`}
   >
-    <img src={image} alt={title} class="h-96 object-cover w-full" />
+    <img
+      src={image}
+      alt={title}
+      class="h-96 object-cover w-full"
+      decoding="async"
+      loading="lazy"
+    />
   </div>
 </section>
