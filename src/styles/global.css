@@ -8,10 +8,58 @@
     background-color: #669BBD;
 }
 
+.text-soft-purple{
+    color: #669BBD;
+}
+
 .cyan{
     background-color: #2DB4A5;
+}
+.text-cyan{
+    color: #2DB4A5;
 }
 
 .deep-blue{
     background-color: #102636;
+}
+
+@font-face {
+  font-family: 'altone-bold';
+  src: url('/fonts/Altone Trial-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'altone-regular';
+  src: url('/fonts/Altone Trial-Regular.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'aileron-light';
+  src: url('/fonts/Aileron-Light.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+h3{
+    font-family: "altone-bold", sans-serif ;
+}
+
+a{
+    font-family: "altone-regular", sans-serif ;
+}
+
+ul{
+font-family: "aileron-light", sans-serif;
+}
+
+p{
+font-family: "aileron-light", sans-serif;
 }

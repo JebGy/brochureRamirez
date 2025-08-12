@@ -21,7 +21,6 @@ const mantenimiento = "/4.svg";
         class="object-fill w-full object-center -z-10"
         decoding="async"
         loading="eager"
-        
       />
     </section>
   </div>
@@ -30,8 +29,35 @@ const mantenimiento = "/4.svg";
   >
     <section class="grid grid-cols-5 h-dvh">
       <div class="col-span-3 grid grid-rows-2">
-        <div class="text-white items-center justify-center flex flex-col">
-          <p class="text-2xl px-30">
+        <div class="text-white items-center justify-center flex flex-col relative">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width={3}
+            stroke="currentColor"
+            class="size-[500px] absolute -left-44 opacity-25 text-cyan -z-10"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width={3}
+            stroke="currentColor"
+            class="size-[500px] absolute -left-80 opacity-25 text-soft-purple -z-10"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+          </svg>
+          <p class="text-3xl px-28">
             Somos una empresa contratista comprometida con el desarrollo
             sostenible y eficiente de cada proyecto. Durante nuestros once años
             de experiencia en el sector, hemos venido ofreciendo servicios
@@ -40,7 +66,9 @@ const mantenimiento = "/4.svg";
         </div>
         <div class="cyan flex flex-col items-start px-24 justify-center">
           <h2 class="text-4xl font-bold text-white">INFRAESTRUCTURA</h2>
-          <ul class="text-white flex flex-col gap-0 list-disc px-8 mt-4">
+          <ul
+            class="text-white text-xl flex flex-col gap-0 list-disc px-8 mt-4"
+          >
             <li>Obras civiles, hidráulicas, sanitarias y viales.</li>
             <li>Movimientos de tierra y excavaciones</li>
             <li>Fabricación de estructuras metálicas</li>
