@@ -1,0 +1,82 @@
+---
+// Guarda como src/pages/laberinto-pointer.astro
+// Laberinto controlado por puntero (mouse/dedo en tablet) arrastrando el camión.
+// Movimiento por celdas siguiendo la dirección del puntero, con bloqueo por paredes.
+const TRUCK_IMG = "https://cdn.jsdelivr.net/gh/twitter/twemoji/assets/72x72/1f69a.png"; // 🚚 PNG
+---
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Laberinto por puntero - Camión</title>
+    <style>
+      :root{ --bg:#0b1020; --panel:#0f172a; --bd:#23314f; --ink:#e5ecff; --muted:#9fb3d9; }
+      *{ box-sizing:border-box }
+      body{ margin:0; min-height:100svh; display:grid; place-items:center; background:var(--bg); color:var(--ink); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial }
+      main{ width:min(1100px,96vw); padding:1rem; }
+      h1{ font-size:clamp(1.2rem,1.2rem + 1vw,1.8rem); margin:.5rem 0 1rem; }
+      .grid{ display:grid; grid-template-columns: 1fr 320px; gap:1rem; align-items:start; }
+      .panel{ background:var(--panel); border:1px solid var(--bd); border-radius:1rem; padding:1rem; box-shadow:0 12px 30px rgba(0,0,0,.35); }
+      .boardWrap{ display:grid; place-items:center; }
+      canvas{ width:min(92vw,720px); height:min(92vw,720px); max-width:720px; max-height:720px; background:#0d1326; border-radius:1rem; border:1px solid var(--bd); box-shadow:inset 0 0 0 1px rgba(255,255,255,.03); touch-action: none; }
+      .row{ display:grid; grid-template-columns: 1fr 1fr; gap:.5rem; margin:.5rem 0 }
+      .btn{ background:#1f2937; color:#fff; border:1px solid #334155; padding:.65rem .9rem; border-radius:.7rem; cursor:pointer; font-weight:700; }
+      .btn.secondary{ background:#0d1326 }
+      .btn:disabled{ opacity:.6; cursor:not-allowed }
+      input, select{ width:100%; background:#0d1326; color:var(--ink); border:1px solid var(--bd); padding:.55rem .6rem; border-radius:.6rem; }
+      .stats{ display:flex; flex-wrap:wrap; gap:1rem; margin:.75rem 0; color:var(--muted) }
+      .legend{ color:var(--muted); font-size:.95rem }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Laberinto (control por puntero: arrastra el camión 🚚)</h1>
+      <div class="grid">
+        <section class="panel boardWrap">
+          <canvas id="maze" width="720" height="720" aria-label="Laberinto"></canvas>
+          <div class="stats" id="stats"></div>
+          <div class="legend">En tablet: mantén el dedo sobre el canvas y arrástralo hacia donde quieras que avance.<br/>No puedes atravesar paredes: si el camino está bloqueado, el camión se detiene en la última celda válida.</div>
+        </section>
+        <aside class="panel">
+          <div class="row">
+            <label>
+              Tamaño (celdas)
+              <select id="sizeSel">
+                <option value="10">10 × 10</option>
+                <option value="12" selected>12 × 12</option>
+                <option value="16">16 × 16</option>
+                <option value="20">20 × 20</option>
+                <option value="24">24 × 24</option>
+              </select>
+            </label>
+            <label>
+              Semilla (opcional)
+              <input id="seedInput" type="text" placeholder="p.ej., demo-42" />
+            </label>
+          </div>
+          <div class="row">
+            <label>
+              Velocidad animación
+              <select id="speedSel">
+                <option value="200">Suave</option>
+                <option value="120" selected>Media</option>
+                <option value="60">Rápida</option>
+                <option value="0">Instantánea</option>
+              </select>
+            </label>
+            <label>
+              Imagen del camión (URL)
+              <input id="truckInput" type="url" placeholder="https://...png" />
+            </label>
+          </div>
+          <div style="display:flex; gap:.5rem; flex-wrap:wrap; margin:.5rem 0;">
+            <button id="newBtn" class="btn">Nuevo laberinto</button>
+            <button id="resetBtn" class="btn secondary">Reiniciar posición</button>
+            <button id="solveBtn" class="btn secondary">Mostrar solución</button>
+          </div>
+        </aside>
+      </div>
+    </main>
+    <script type="module" src="/js/laberinto.js"></script>
+  </body>
+</html>
