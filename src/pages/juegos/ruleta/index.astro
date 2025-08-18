@@ -49,7 +49,7 @@ const DEFAULT_ITEMS = [
   </head>
   <body>
     <main>
-      <h1>Ruleta ponderada (con pesos de probabilidad)</h1>
+      <h1>Ruleta</h1>
       <div class="grid">
         <section class="panel wheelWrap">
           <div class="wheelBox">
@@ -72,27 +72,6 @@ const DEFAULT_ITEMS = [
           </div>
         </section>
 
-        <section class="panel">
-          <div class="controls">
-            <div class="row">
-              <input id="labelInput" type="text" placeholder="Nombre del ítem (ej. Premio A)"/>
-              <input id="weightInput" type="number" step="0.01" min="0" placeholder="Peso (ej. 2.5)"/>
-              <input id="colorInput" type="color" value="#4f46e5"/>
-              <button id="addBtn" class="btn">Agregar</button>
-            </div>
-            <table class="tbl" id="itemsTbl">
-              <thead>
-                <tr><th>Ítem</th><th>Peso</th><th>Prob.</th><th></th></tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-            <div style="display:flex; gap:.5rem; flex-wrap:wrap;">
-              <button id="seedBtn" class="btn secondary">Cargar ejemplo</button>
-              <button id="clearBtn" class="btn danger">Vaciar todo</button>
-              <span class="legend" id="totalLegend"></span>
-            </div>
-          </div>
-        </section>
       </div>
     </main>
     <script type="module" src="/js/ruleta.js"></script>
