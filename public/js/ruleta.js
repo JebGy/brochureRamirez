@@ -1,11 +1,30 @@
 const DEFAULT_ITEMS = [
-  { label: "Llavero 🔑", weight: 5 },
-  { label: "Gorro 🧢", weight: 1 },
+  { label: "Llavero 🔑", weight: 3 },
+  { label: "Llavero 🔑", weight: 3 },
+  { label: "Llavero 🔑", weight: 3 },
+  { label: "Gorro 🧢", weight: 3 },
+  { label: "Gorro 🧢", weight: 3 },
   { label: "Vuelve a girar 🎡", weight: 3 },
-  { label: "Libreta 📒", weight: 5 },
-  { label: "Shaker 🥤", weight: 2 },
-  { label: "Perdiste 😭", weight: 1 },
+  { label: "Perdiste 😭", weight: 3 },
+  { label: "Libreta 📒", weight: 3 },
+  { label: "Libreta 📒", weight: 3 },
+  { label: "Libreta 📒", weight: 3 },
+  { label: "Shaker 🥤", weight: 3 },
+  { label: "Shaker 🥤", weight: 3 },
+  { label: "Shaker 🥤", weight: 3 },
+  { label: "Perdiste 😭", weight: 3 },
 ];
+
+function shuffle(array) {
+  let m = array.length, i;
+  while (m) {
+    i = Math.floor(Math.random() * m--);
+    [array[m], array[i]] = [array[i], array[m]];
+  }
+  return array;
+}
+
+const randomizedItems = shuffle([...DEFAULT_ITEMS]);
 const wheelG = document.getElementById("wheel");
 const spinBtn = document.getElementById("spinBtn");
 const fastBtn = document.getElementById("fastBtn");
@@ -34,7 +53,7 @@ function load() {
       state.items = JSON.parse(raw);
     } catch (e) {}
   }
-  state.items = [...DEFAULT_ITEMS].map((it, i) => ({
+  state.items = [...randomizedItems].map((it, i) => ({
     ...it,
     color: pickColor(i),
   }));
@@ -65,9 +84,10 @@ function normalizedWeights() {
 function drawWheel() {
   wheelG.innerHTML = "";
   const { items, total } = normalizedWeights();
-  const cx = 250,
-    cy = 250,
-    r = 230;
+  // Aumentar el tamaño de la ruleta
+  const cx = 350,  // Cambiar de 300 a 350
+    cy = 350,      // Cambiar de 300 a 350
+    r = 330;       // Cambiar de 280 a 330
   if (items.length === 0 || total <= 0) {
     const circle = document.createElementNS(
       "http://www.w3.org/2000/svg",
@@ -141,23 +161,7 @@ function drawWheel() {
         tspan.textContent = line;
         label.appendChild(tspan);
       });
-    } else if (text.length > 12) {
-      const words = text.split(" ");
-      if (words.length > 1) {
-        label.innerHTML = "";
-        words.forEach((word, index) => {
-          const tspan = document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "tspan"
-          );
-          tspan.setAttribute("x", textPos.x);
-          tspan.setAttribute("dy", index === 0 ? "0" : "1.2em");
-          tspan.textContent = word;
-          label.appendChild(tspan);
-        });
-      } else {
-        label.textContent = text;
-      }
+    
     } else {
       label.textContent = text;
     }
