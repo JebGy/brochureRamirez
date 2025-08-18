@@ -1,0 +1,100 @@
+---
+// Guarda como src/pages/ruleta.astro
+// Ruleta con elementos ponderados por peso. 100% JS/HTML/CSS vanilla.
+// Ajusta los items iniciales aquí o edítalos en la UI.
+const DEFAULT_ITEMS = [
+  { label: 'A', weight: 1 },
+  { label: 'B', weight: 2 },
+  { label: 'C', weight: 3 },
+  { label: 'D', weight: 4 },
+];
+---
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ruleta ponderada</title>
+    <style>
+      :root { --size: min(80vmin, 540px); }
+      * { box-sizing: border-box; }
+      body{ margin:0; min-height:100svh; display:grid; place-items:center; background:#0b1020; color:#f8fafc; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; }
+      main{ width:min(1100px,96vw); padding:1rem; }
+      h1{ font-size:clamp(1.2rem,1.2rem + 1vw,1.8rem); margin:.5rem 0 1rem; }
+      .grid{ display:grid; grid-template-columns: 1fr auto; gap:1.2rem; align-items:start; }
+      .panel{ background:#0f172a; border:1px solid #1f2a44; border-radius:1rem; padding:1rem; box-shadow:0 12px 30px rgba(0,0,0,.35); }
+      .controls{ display:grid; gap:.75rem; }
+      .row{ display:grid; grid-template-columns: 1fr 120px 100px auto; gap:.5rem; align-items:center; }
+      .tbl{ width:100%; border-collapse: collapse; font-size:.95rem; }
+      .tbl th,.tbl td{ padding:.4rem .5rem; border-bottom:1px solid #23314f; text-align:left; }
+      .tbl th{ color:#9fb3d9; font-weight:700; }
+      .tbl td{ color:#dbe4f3; }
+      input[type="text"], input[type="number"]{ width:100%; background:#0d1326; color:#e5ecff; border:1px solid #23314f; padding:.5rem .6rem; border-radius:.6rem; }
+      input[type="number"]{ text-align:right; }
+      .btn{ background:#1f2937; color:#fff; border:1px solid #334155; padding:.6rem .9rem; border-radius:.7rem; cursor:pointer; font-weight:700; }
+      .btn:disabled{ opacity:.5; cursor:not-allowed; }
+      .btn.secondary{ background:#0d1326; }
+      .btn.danger{ background:#7f1d1d; border-color:#b91c1c; }
+      .wheelWrap{ display:grid; place-items:center; }
+      .wheelBox{ width:var(--size); aspect-ratio:1/1; position:relative; }
+      .needle{ position:absolute; left:50%; top:0; transform:translate(-50%,-15%); width:0; height:0; border-left:16px solid transparent; border-right:16px solid transparent; border-bottom:26px solid #fbbf24; filter: drop-shadow(0 4px 6px rgba(0,0,0,.4)); }
+      svg{ width:100%; height:100%; display:block; }
+      #wheel{ transition: transform 3.6s cubic-bezier(.17,.84,.14,.99); transform-origin: 50% 50%; }
+      .centerCap{ fill:#0d1326; stroke:#334155; stroke-width:2; }
+      .result{ margin-top: .75rem; font-size:1.05rem; }
+      .pill{ display:inline-block; padding:.2rem .5rem; border-radius:.6rem; background:#0d1326; border:1px solid #23314f; }
+      .history{ max-height: 180px; overflow:auto; border:1px solid #23314f; border-radius:.6rem; padding:.4rem .5rem; }
+      .muted{ color:#9fb3d9; font-size:.9rem; }
+      .legend{ font-size:.85rem; color:#9fb3d9; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Ruleta ponderada (con pesos de probabilidad)</h1>
+      <div class="grid">
+        <section class="panel wheelWrap">
+          <div class="wheelBox">
+            <div class="needle" aria-hidden="true"></div>
+            <svg viewBox="0 0 500 500" role="img" aria-label="Ruleta">
+              <g id="wheel" transform="rotate(0 250 250)"></g>
+              <circle cx="250" cy="250" r="22" class="centerCap"/>
+            </svg>
+          </div>
+          <div class="result" id="result"></div>
+          <div class="muted" id="odds"></div>
+          <div style="display:flex; gap:.5rem; margin-top:.6rem; flex-wrap:wrap;">
+            <button id="spinBtn" class="btn">Girar 🎯</button>
+            <button id="fastBtn" class="btn secondary">Giro rápido ⚡</button>
+            <button id="resetBtn" class="btn secondary">Reiniciar</button>
+          </div>
+          <div style="margin-top: .8rem; width:100%">
+            <div class="legend">Historial</div>
+            <div id="history" class="history muted"></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="controls">
+            <div class="row">
+              <input id="labelInput" type="text" placeholder="Nombre del ítem (ej. Premio A)"/>
+              <input id="weightInput" type="number" step="0.01" min="0" placeholder="Peso (ej. 2.5)"/>
+              <input id="colorInput" type="color" value="#4f46e5"/>
+              <button id="addBtn" class="btn">Agregar</button>
+            </div>
+            <table class="tbl" id="itemsTbl">
+              <thead>
+                <tr><th>Ítem</th><th>Peso</th><th>Prob.</th><th></th></tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <div style="display:flex; gap:.5rem; flex-wrap:wrap;">
+              <button id="seedBtn" class="btn secondary">Cargar ejemplo</button>
+              <button id="clearBtn" class="btn danger">Vaciar todo</button>
+              <span class="legend" id="totalLegend"></span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="/js/ruleta.js"></script>
+  </body>
+</html>
