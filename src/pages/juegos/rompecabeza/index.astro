@@ -1,0 +1,196 @@
+---
+// Este archivo puede guardarse como src/pages/rompecabezas.astro
+// No requiere React; usa HTML, CSS y JS vanilla dentro de una página Astro.
+// Cambia IMAGE_URL y GRID_SIZE para ajustar.
+const IMAGE_URL =
+  "https://ramirezgroup.com.pe/wp-content/uploads/2023/06/logo-RAMIREZ-GROUP.png"; // cualquier imagen pública
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rompecabezas en Astro</title>
+    <style>
+      :root {
+        --size: min(90vmin, 720px);
+      }
+      body {
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          "Helvetica Neue",
+          Arial,
+          "Noto Sans",
+          "Apple Color Emoji",
+          "Segoe UI Emoji";
+        display: grid;
+        place-items: center;
+        min-height: 100svh;
+        margin: 0;
+        background: #0b1020;
+        color: #f8fafc;
+      }
+      .app {
+        width: min(96vw, 980px);
+      }
+      h1 {
+        font-size: clamp(1.1rem, 2vw + 0.8rem, 1.8rem);
+        margin: 1rem 0 0.75rem;
+        font-weight: 700;
+      }
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+        margin-bottom: 1rem;
+      }
+      .btn {
+        background: #1f2937;
+        color: #fff;
+        border: 1px solid #334155;
+        padding: 0.6rem 0.9rem;
+        border-radius: 0.75rem;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .select {
+        background: #111827;
+        color: #fff;
+        border: 1px solid #334155;
+        padding: 0.5rem 0.6rem;
+        border-radius: 0.6rem;
+      }
+      .board {
+        position: relative;
+        width: var(--size);
+        height: var(--size);
+        display: grid;
+        gap: 2px;
+        background: #111827;
+        border-radius: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        overflow: hidden;
+      }
+      .tile {
+        position: relative;
+        background-size: calc(var(--size)) calc(var(--size));
+        background-repeat: no-repeat;
+        aspect-ratio: 1/1;
+        user-select: none;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        color: #fff8;
+        transition: box-shadow 0.15s ease;
+      }
+      .tile:focus-visible {
+        outline: 2px solid #60a5fa;
+        outline-offset: -2px;
+      }
+      .tile.correct {
+        box-shadow: inset 0 0 0 3px #22c55e;
+      }
+      .stats {
+        display: flex;
+        gap: 1rem;
+        margin-top: 0.75rem;
+        font-size: 0.95rem;
+        color: #cbd5e1;
+      }
+      .preview {
+        width: 180px;
+        border-radius: 0.75rem;
+        overflow: hidden;
+        border: 1px solid #334155;
+      }
+      .wrap {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr auto;
+        align-items: start;
+      }
+      .toast {
+        position: fixed;
+        inset: auto 0 2rem 0;
+        margin-inline: auto;
+        width: max-content;
+        background: #16a34a;
+        color: #001106;
+        padding: 0.65rem 1rem;
+        border-radius: 0.65rem;
+        font-weight: 700;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+        display: none;
+      }
+      .toast.show {
+        display: block;
+      }
+      .legend {
+        font-size: 0.85rem;
+        color: #94a3b8;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="app">
+      <h1>Rompecabezas en Astro</h1>
+      <div class="toolbar">
+        <button id="shuffleBtn" class="btn">Mezclar</button>
+        <button id="hintBtn" class="btn"
+          >Pista (resaltar piezas correctas)</button
+        >
+        <label class="legend"
+          >Tamaño:
+          <select id="gridSelect" class="select">
+            <option value="3">3×3</option>
+            <option value="4" selected>4×4</option>
+            <option value="5">5×5</option>
+            <option value="6">6×6</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="wrap">
+        <section>
+          <div
+            id="board"
+            class="board"
+            role="grid"
+            aria-label="Tablero del rompecabezas"
+          >
+          </div>
+          <div class="stats">
+            <div><strong>Movimientos:</strong> <span id="moves">0</span></div>
+            <div><strong>Tiempo:</strong> <span id="time">00:00</span></div>
+          </div>
+        </section>
+        <aside>
+          <figure class="preview">
+            <img
+              id="previewImg"
+              src={IMAGE_URL}
+              alt="Previsualización"
+              style="width:100%;display:block; background-color:white"
+            />
+          </figure>
+          <p class="legend">
+            Haz clic en dos piezas para intercambiarlas. Ordena hasta formar la
+            imagen.
+          </p>
+        </aside>
+      </div>
+
+      <div id="toast" class="toast">¡Completado! 🎉</div>
+    </main>
+    <script type="module" src="/js/rompecabeza.js"></script>
+  </body>
+</html>
