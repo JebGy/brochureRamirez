@@ -1,9 +1,9 @@
 const DEFAULT_ITEMS = [
-  { label: "Gorro 🧢", weight: 1 },
-  { label: "Shaker 🥤", weight: 2 },
-  { label: "Libreta 📒", weight: 5 },
   { label: "Llavero 🔑", weight: 5 },
+  { label: "Gorro 🧢", weight: 1 },
   { label: "Vuelve a girar 🎡", weight: 3 },
+  { label: "Libreta 📒", weight: 5 },
+  { label: "Shaker 🥤", weight: 2 },
   { label: "Perdiste 😭", weight: 1 },
 ];
 const wheelG = document.getElementById("wheel");
@@ -41,7 +41,7 @@ function load() {
 }
 
 function pickColor(i) {
-  const colors = ["#111417", "#2DB4A5"];
+  const colors = ["#476ACE", "#2DB4A5"];
   return colors[i % colors.length];
 }
 function toRadians(deg) {
@@ -87,11 +87,13 @@ function drawWheel() {
   let angle = -90;
 
   const slices = [];
-  const uniformSweep = 360 / items.length;
+  // CAMBIO PRINCIPAL: Usar pesos en lugar de sectores uniformes
 
   items.forEach((it, i) => {
     const a0 = angle;
-    const a1 = angle + uniformSweep;
+    // Calcular el ángulo basado en el peso del item
+    const sweep = (it.weight / total) * 360;
+    const a1 = angle + sweep;
     const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
     path.setAttribute("d", arcPath(cx, cy, r, a0, a1));
     path.setAttribute("fill", it.color || pickColor(i));
@@ -100,8 +102,8 @@ function drawWheel() {
     path.setAttribute("stroke-width", "1");
     wheelG.appendChild(path);
 
-    const mid = a0 + uniformSweep / 2;
-    const textRadius = r * 0.7; // Posición del texto hacia el borde
+    const mid = a0 + sweep / 2;
+    const textRadius = r * 0.7;
     const textPos = polarToXY(cx, cy, textRadius, mid);
     
     const label = document.createElementNS(
@@ -161,7 +163,7 @@ function drawWheel() {
     }
     wheelG.appendChild(label);
     slices.push({ a0, a1, mid, item: it });
-    angle = a1;
+    angle = a1; // Actualizar el ángulo para el siguiente sector
   });
   wheelG.dataset.slices = JSON.stringify(slices);
   oddsEl.textContent = items
