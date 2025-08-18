@@ -1,0 +1,141 @@
+---
+import GalleryItem from './GalleryItem.astro';
+
+const { images } = Astro.props;
+---
+
+<section class="px-10 xl:px-64 lg:px-48 pb-20">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+    {images.map((image, index) => (
+      <GalleryItem 
+        image={image} 
+        index={index}
+        class={`gallery-item-${index}`}
+      />
+    ))}
+  </div>
+</section>
+
+<!-- Modal para vista ampliada -->
+<div id="gallery-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden items-center justify-center p-4">
+  <div class="relative max-w-4xl max-h-full">
+    <button 
+      id="close-modal" 
+      class="absolute -top-12 right-0 text-white text-4xl hover:text-gray-300 transition-colors"
+      aria-label="Cerrar modal"
+    >
+      ×
+    </button>
+    <img 
+      id="modal-image" 
+      src="" 
+      alt="" 
+      class="max-w-full max-h-[80vh] object-contain rounded-lg"
+    />
+    <div class="text-center mt-4">
+      <h3 id="modal-title" class="text-white text-2xl font-bold Altone"></h3>
+      <p id="modal-counter" class="text-white opacity-70 mt-2"></p>
+    </div>
+    
+    <!-- Navegación del modal -->
+    <button 
+      id="prev-image" 
+      class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white text-3xl hover:text-gray-300 transition-colors bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center"
+      aria-label="Imagen anterior"
+    >
+      ‹
+    </button>
+    <button 
+      id="next-image" 
+      class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white text-3xl hover:text-gray-300 transition-colors bg-black bg-opacity-50 rounded-full w-12 h-12 flex items-center justify-center"
+      aria-label="Siguiente imagen"
+    >
+      ›
+    </button>
+  </div>
+</div>
+
+<script>
+  // Funcionalidad del modal
+  const modal = document.getElementById('gallery-modal');
+  const modalImage = document.getElementById('modal-image');
+  const modalTitle = document.getElementById('modal-title');
+  const modalCounter = document.getElementById('modal-counter');
+  const closeModal = document.getElementById('close-modal');
+  const prevButton = document.getElementById('prev-image');
+  const nextButton = document.getElementById('next-image');
+  
+  let currentImageIndex = 0;
+  let galleryImages = [];
+  
+  // Recopilar todas las imágenes de la galería
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    galleryImages = Array.from(galleryItems).map(item => ({
+      src: item.dataset.src,
+      alt: item.dataset.alt,
+      title: item.dataset.title
+    }));
+  });
+  
+  function openModal(index) {
+    currentImageIndex = index;
+    updateModalContent();
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+  
+  function closeModalHandler() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = 'auto';
+  }
+  
+  function updateModalContent() {
+    const image = galleryImages[currentImageIndex];
+    modalImage.src = image.src;
+    modalImage.alt = image.alt;
+    modalTitle.textContent = image.title;
+    modalCounter.textContent = `${currentImageIndex + 1} de ${galleryImages.length}`;
+  }
+  
+  function showPrevImage() {
+    currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+    updateModalContent();
+  }
+  
+  function showNextImage() {
+    currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+    updateModalContent();
+  }
+  
+  // Event listeners
+  closeModal.addEventListener('click', closeModalHandler);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModalHandler();
+  });
+  
+  prevButton.addEventListener('click', showPrevImage);
+  nextButton.addEventListener('click', showNextImage);
+  
+  // Navegación con teclado
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('hidden')) {
+      switch(e.key) {
+        case 'Escape':
+          closeModalHandler();
+          break;
+        case 'ArrowLeft':
+          showPrevImage();
+          break;
+        case 'ArrowRight':
+          showNextImage();
+          break;
+      }
+    }
+  });
+  
+  // Hacer la función openModal global
+  window.openModal = openModal;
+</script>

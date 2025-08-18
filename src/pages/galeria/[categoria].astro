@@ -1,0 +1,105 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import GalleryGrid from "../../components/GalleryGrid.astro";
+
+// Datos de ejemplo para diferentes categorías
+const galleryData = {
+  infraestructura: {
+    title: "Infraestructura",
+    description: "Proyectos de infraestructura y construcción",
+    images: [
+      { id: 1, src: "/1.png", alt: "Proyecto de infraestructura 1", title: "Puente Principal" },
+      { id: 2, src: "/2.png", alt: "Proyecto de infraestructura 2", title: "Carretera Norte" },
+      { id: 3, src: "/3.png", alt: "Proyecto de infraestructura 3", title: "Túnel Central" },
+      { id: 4, src: "/4.png", alt: "Proyecto de infraestructura 4", title: "Viaducto Sur" },
+      { id: 5, src: "/5.png", alt: "Proyecto de infraestructura 5", title: "Plaza Comercial" },
+      { id: 6, src: "/6.png", alt: "Proyecto de infraestructura 6", title: "Centro Logístico" }
+    ]
+  },
+  geotecnia: {
+    title: "Geotecnia",
+    description: "Estudios y análisis geotécnicos",
+    images: [
+      { id: 1, src: "/1.png", alt: "Estudio geotécnico 1", title: "Análisis de Suelos" },
+      { id: 2, src: "/2.png", alt: "Estudio geotécnico 2", title: "Perforación Exploratoria" },
+      { id: 3, src: "/3.png", alt: "Estudio geotécnico 3", title: "Ensayos de Laboratorio" },
+      { id: 4, src: "/4.png", alt: "Estudio geotécnico 4", title: "Monitoreo Sísmico" }
+    ]
+  },
+  alquiler: {
+    title: "Alquiler de Equipos",
+    description: "Maquinaria y equipos especializados",
+    images: [
+      { id: 1, src: "/1.png", alt: "Equipo de alquiler 1", title: "Excavadora CAT" },
+      { id: 2, src: "/2.png", alt: "Equipo de alquiler 2", title: "Grúa Torre" },
+      { id: 3, src: "/3.png", alt: "Equipo de alquiler 3", title: "Bulldozer D8" },
+      { id: 4, src: "/4.png", alt: "Equipo de alquiler 4", title: "Compactadora" },
+      { id: 5, src: "/5.png", alt: "Equipo de alquiler 5", title: "Retroexcavadora" }
+    ]
+  },
+  mantenimiento: {
+    title: "Mantenimiento",
+    description: "Servicios de mantenimiento especializado",
+    images: [
+      { id: 1, src: "/1.png", alt: "Mantenimiento 1", title: "Mantenimiento Preventivo" },
+      { id: 2, src: "/2.png", alt: "Mantenimiento 2", title: "Reparación de Equipos" },
+      { id: 3, src: "/3.png", alt: "Mantenimiento 3", title: "Inspección Técnica" }
+    ]
+  }
+};
+
+// Obtener la categoría de la URL
+const { categoria } = Astro.params;
+
+// Validar que la categoría existe
+if (!categoria || !Object.prototype.hasOwnProperty.call(galleryData, categoria)) {
+  return Astro.redirect('/404');
+}
+
+const currentGallery = galleryData[categoria as keyof typeof galleryData];
+
+// Generar rutas estáticas para todas las categorías
+export async function getStaticPaths() {
+  return [
+    { params: { categoria: 'infraestructura' } },
+    { params: { categoria: 'geotecnia' } },
+    { params: { categoria: 'alquiler' } },
+    { params: { categoria: 'mantenimiento' } }
+  ];
+}
+---
+
+<Layout>
+  <div class="min-h-screen deep-blue">
+    <!-- Header de la galería -->
+    <section class="relative pt-20 pb-12 px-10 xl:px-64 lg:px-48">
+      <div class="text-center text-white">
+        <h1 class="text-4xl lg:text-6xl font-bold Altone mb-4">
+          {currentGallery.title}
+        </h1>
+        <p class="text-xl lg:text-2xl opacity-80 max-w-3xl mx-auto">
+          {currentGallery.description}
+        </p>
+      </div>
+      
+      <!-- Navegación de categorías -->
+      <nav class="mt-8 flex flex-wrap justify-center gap-4">
+        {Object.keys(galleryData).map(cat => (
+          <a 
+            href={`/galeria/${cat}`}
+            class={`px-6 py-3 rounded-full transition-all duration-300 ${
+              cat === categoria 
+                ? 'bg-white text-black font-semibold' 
+                : 'bg-transparent border-2 border-white text-white hover:bg-white hover:text-black'
+            }`}
+          >
+            {galleryData[cat as keyof typeof galleryData].title}
+          </a>
+        ))}
+      </nav>
+    </section>
+
+    <!-- Grid de la galería -->
+    <GalleryGrid images={currentGallery.images} />
+  </div>
+</Layout>

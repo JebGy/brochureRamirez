@@ -3,7 +3,7 @@ const {
   reversed,
   title,
   list = ["", "", "", ""],
-  link,
+  link = "",
   clases,
   image,
 } = Astro.props;
@@ -21,13 +21,17 @@ const {
       {title}
     </h3>
     <ul class="text-white flex flex-col gap-0 list-disc lg:px-8 md:px-8 px-1">
-      {list.map((item: string) => <li class="lg:text-xl md:text-sm text-xs ">{item}</li>)}
+      {
+        list.map((item: string) => (
+          <li class="lg:text-xl md:text-sm text-xs ">{item}</li>
+        ))
+      }
     </ul>
 
-    <div class="w-full flex flex-row items-center justify-end mt-4 ">
+    <div class="w-full flex flex-row items-center justify-end mt-4">
       <a
-        href={link}
-        class="bg-white rounded-full text-black lg:w-64 w-48 lg:text-2xl md:text-xl text-sm  flex flex-row items-center justify-end p-2 text-end"
+        href={link.startsWith("/galeria/") ? link : `/galeria/${link}`}
+        class="bg-white rounded-full text-black lg:w-64 w-48 lg:text-2xl md:text-xl text-sm flex flex-row items-center justify-end p-2 text-end"
         >Conocer más<span
           class="text-white deep-blue ml-2 rounded-full flex flex-col items-center justify-center"
           ><svg
@@ -49,14 +53,15 @@ const {
   </section>
   <div
     class={`p-0 lg:col-span-1 md:col-span-1 col-span-1 h-90 overflow-hidden row-start-1 ${
-      reversed ? "lg:col-start-3 lg:row-start-1 md:col-start-3 md:row-start-1 row-start-2" : "lg:col-start-1 lg:row-start-1 md:col-start-1 md:row-start-1 col-start-2 row-start-2"
+      reversed
+        ? "lg:col-start-3 lg:row-start-1 md:col-start-3 md:row-start-1 row-start-2"
+        : "lg:col-start-1 lg:row-start-1 md:col-start-1 md:row-start-1 col-start-2 row-start-2"
     }`}
   >
     <img
       src={image}
       alt={title}
       class="h-96 object-cover w-full"
-      
       loading="lazy"
     />
   </div>
