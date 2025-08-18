@@ -1,5 +1,5 @@
-const W = 720,
-  H = 720;
+const W = 600,
+  H = 600;
 const canvas = document.getElementById("maze");
 const ctx = canvas.getContext("2d");
 const sizeSel = document.getElementById("sizeSel");
@@ -9,6 +9,7 @@ const truckInput = document.getElementById("truckInput");
 const newBtn = document.getElementById("newBtn");
 const resetBtn = document.getElementById("resetBtn");
 const solveBtn = document.getElementById("solveBtn");
+const menuBtn = document.getElementById("menuBtn");
 const statsEl = document.getElementById("stats");
 
 // RNG con semilla
@@ -40,7 +41,7 @@ let grid,
   walls,
   player,
   goal,
-  anim = { t: 0, from: null, to: null, dur: 120 },
+  anim = { t: 0, from: null, to: null, dur: 120 }, // Animación media predefinida
   solutionPath;
 let moves = 0,
   startTime = 0,
@@ -392,10 +393,9 @@ resetBtn.addEventListener("click", () => {
   draw();
 });
 solveBtn.addEventListener("click", solve);
-truckInput.addEventListener("change", () => {
-  if (truckInput.value) {
-    truck.src = truckInput.value;
-  }
+menuBtn.addEventListener("click", () => {
+  // Redirigir al menú principal
+  window.location.href = "/";
 });
 
 // Primera carga
