@@ -15,16 +15,6 @@ const DEFAULT_ITEMS = [
   { label: "Perdiste 😭", weight: 3 },
 ];
 
-function shuffle(array) {
-  let m = array.length, i;
-  while (m) {
-    i = Math.floor(Math.random() * m--);
-    [array[m], array[i]] = [array[i], array[m]];
-  }
-  return array;
-}
-
-const randomizedItems = shuffle([...DEFAULT_ITEMS]);
 const wheelG = document.getElementById("wheel");
 const spinBtn = document.getElementById("spinBtn");
 const fastBtn = document.getElementById("fastBtn");
@@ -53,7 +43,7 @@ function load() {
       state.items = JSON.parse(raw);
     } catch (e) {}
   }
-  state.items = [...randomizedItems].map((it, i) => ({
+  state.items = [...DEFAULT_ITEMS].map((it, i) => ({
     ...it,
     color: pickColor(i),
   }));
@@ -245,10 +235,20 @@ function spin(durationMs = 3600) {
   if (!pick) return;
   const slice = findSliceForLabel(pick.label);
   if (!slice) return;
+  
+  // El puntero está en la parte superior (-90°)
+  // Necesitamos que el centro del slice seleccionado quede en esa posición
   const targetMid = slice.mid;
-  const baseRotations = 3 * 360;
-  let neededRotation = -targetMid;
-  while (neededRotation < 0) neededRotation += 360;
+  const baseRotations = 3 * 360; // 3 vueltas completas
+  
+  // Calculamos el ángulo necesario para que targetMid llegue a -90°
+  let neededRotation = -90 - targetMid;
+  
+  // Normalizamos para obtener la rotación más corta
+  while (neededRotation <= -180) neededRotation += 360;
+  while (neededRotation > 180) neededRotation -= 360;
+  
+  // Calculamos la rotación final
   const finalRotation = state.rotation + baseRotations + neededRotation;
 
   wheelG.style.transitionDuration = `${durationMs}ms`;
