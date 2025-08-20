@@ -54,21 +54,22 @@ const infraList = [
     </span>
   </section>
 
-  <section class="grid grid-cols-7 w-full mt-20 px-8 z-10 relative">
+  <section class="grid grid-cols-7 w-full h-[850px] mt-20 px-8 z-10 relative">
     <span class="col-span-3 grid grid-rows-2">
-      <span class="row-span-1 bg-stone-50"> </span>
-      <span class="row-span-1 deep-purple relative">
+      <span class="row-span-2  relative">
         <img
           src={geotecnia}
           alt="Landing Design"
-          class="w-full h-[618px] object-cover rounded-tl-[128px] rounded-br-[128px] absolute block left-0 bottom-0 object-left"
+          class="w-full h-full object-cover rounded-tl-[128px] rounded-br-[128px] absolute block left-0 bottom-0 object-left"
         />
+
+        <span class="deep-purple w-full h-96 absolute bottom-0 -z-10 left-0"></span>
       </span>
     </span>
     <div class="grid grid-rows-2 col-span-4 items-center">
       <h1 class="text-5xl font-altone pl-16"></h1>
       <section
-        class="deep-purple text-white py-8 pr-16 pl-10 rounded-tr-[64px] rounded-br-[64px]"
+        class="deep-purple text-white h-full justify-center flex flex-col py-8 pr-16 pl-10 rounded-tr-[64px] rounded-br-[64px]"
       >
         <h2 class="font-altone-bold text-3xl">Geotecnia</h2>
         <ul class="gap-4 flex flex-col mt-4 text-xl">
@@ -84,11 +85,11 @@ const infraList = [
     </div>
   </section>
 
-  <section class="grid grid-cols-7 w-full mt-20 px-8 z-10 relative">
+  <section class="grid grid-cols-7 w-full h-[850px] mt-20 px-8 z-10 relative">
     <div class="grid grid-rows-2 col-span-4 items-center">
       <h1 class="text-5xl font-altone pl-16"></h1>
       <section
-        class="soft-purple text-white py-8 pl-16 pr-16 rounded-tl-[64px] rounded-bl-[64px]"
+        class="soft-purple text-white py-8 pl-16 pr-16 rounded-tl-[64px]  rounded-bl-[64px] h-full flex flex-col justify-center "
       >
         <h2 class="font-altone-bold text-3xl">Infraestructura</h2>
         <ul class="gap-4 flex flex-col mt-4 text-xl">
@@ -106,28 +107,29 @@ const infraList = [
       <img
         src={mantenimiento}
         alt="Landing Design"
-        class="w-full h-[618px] object-cover rounded-tl-[128px] rounded-br-[128px] absolute block right-8 bottom-0 object-right"
+        class="w-full h-full object-cover rounded-tl-[128px] rounded-br-[128px] absolute block right-8 bottom-0 object-right"
       />
     </span>
   </section>
 
-  <section class="grid grid-cols-7 w-full mt-20 px-8 z-10 relative">
+  <section class="grid grid-cols-7 w-full h-[850px] mt-20 px-8 z-10 relative">
     <span class="col-span-3 grid grid-rows-2">
-      <span class="row-span-1 bg-stone-50"> </span>
-      <span class="row-span-1 deep-purple relative">
+      <span class="row-span-2  relative">
         <img
           src={alquiler}
           alt="Landing Design"
-          class="w-full h-[618px] object-cover rounded-tl-[128px] rounded-br-[128px] absolute block left-0 bottom-0 object-left"
+          class="w-full h-full object-cover rounded-tl-[128px] rounded-br-[128px] absolute block left-0 bottom-0 object-bottom"
         />
+
+        <span class="cyan w-full h-96 absolute bottom-0 -z-10 left-0"></span>
       </span>
     </span>
     <div class="grid grid-rows-2 col-span-4 items-center">
       <h1 class="text-5xl font-altone pl-16"></h1>
       <section
-        class="deep-purple text-white py-8 pr-16 pl-10 rounded-tr-[64px] rounded-br-[64px]"
+        class="cyan text-white h-full justify-center flex flex-col py-8 pr-16 pl-10 rounded-tr-[64px] rounded-br-[64px]"
       >
-        <h2 class="font-altone-bold text-3xl">Infraestructura</h2>
+        <h2 class="font-altone-bold text-3xl">Renta de Maquinaria</h2>
         <ul class="gap-4 flex flex-col mt-4 text-xl">
           {
             infraList.map((item) => (
