@@ -15,6 +15,26 @@ const infraList = [
   { nombre: "Estructuras Metálicas", link: "/estructuras-metálicas" },
   { nombre: "Montajes industriales", link: "/montajes-industriales" },
 ];
+
+const geoList = [
+  { nombre: "Mejora de Suelos", link: "/geotecnia" },
+  { nombre: "Estabilización de taludes", link: "/mantenimiento" },
+  { nombre: "Cimentaciones profundas", link: "/alquiler" },
+  { nombre: "Estabilidad de excavaciones", link: "/infraestructura" },
+];
+
+const mantenimientoList = [
+  { nombre: "Montaje de tuberías HDPE", link: "/montaje-de-tuberías-hdpe" },
+  { nombre: "Fajas transportadoras", link: "/fajas-transportadoras" },
+  { nombre: "Vías de acceso", link: "/vias-de-acceso" },
+];
+
+const rentaList = [
+  { nombre: "Camiones Grúa", link: "/camiones-grua" },
+  { nombre: "Camiones Volquete", link: "/camiones-volquete" },
+  { nombre: "Línea Amarilla", link: "/linea-amarilla" },
+  { nombre: "Equipo de iluminación", link: "/equipo-de-iluminacion" },
+];
 ---
 
 <Layout>
@@ -22,133 +42,160 @@ const infraList = [
   <section class="relative overflow-hidden">
     <img src={header} alt="Landing Design" class="w-full h-full object-cover" />
   </section>
-
-  <section class="grid grid-cols-7 w-full h-[850px] mt-8 px-8 z-90">
-    <div class="grid grid-rows-2 col-span-4 items-center">
-      <h1 class="text-5xl font-altone pl-16">
-        Soluciones en <br /><span class="font-altone-bold text-cyan"
-          >ingeniería y <br /> construcción</span
+  <section class="relative mb-96">
+    <section
+      class="grid grid-cols-7 w-full h-[650px] lg:h-[850px] mt-8 px-8 z-90"
+    >
+      <div class="grid grid-rows-2 col-span-4 items-center">
+        <h1 class="lg:text-5xl text-4xl font-altone pl-16">
+          Soluciones en <br /><span class="font-altone-bold text-cyan"
+            >ingeniería y <br /> construcción</span
+          >
+        </h1>
+        <section
+          class="cyan text-white h-full justify-center flex flex-col py-8 pl-16 pr-10 rounded-tl-[64px] rounded-bl-[64px]"
         >
-      </h1>
-      <section
-        class="cyan text-white h-full justify-center flex flex-col py-8 pl-16 pr-16 rounded-tl-[64px] rounded-bl-[64px]"
-      >
-        <h2 class="font-altone-bold text-3xl">Infraestructura</h2>
-        <ul class="gap-4 flex flex-col mt-4 text-xl">
-          {
-            infraList.map((item) => (
-              <li class="bg-white text-black font-altone py-2 px-4 rounded-full">
-                {item.nombre}
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-    </div>
-    <span class="relative col-span-3">
-      <img
-        src={infraestructura}
-        alt="Landing Design"
-        class="w-full h-full object-cover rounded-tl-[128px] rounded-br-[128px] absolute block right-8 bottom-0 object-right-top"
-      />
-    </span>
-  </section>
-
-  <section class="grid grid-cols-7 w-full h-[850px] mt-20 px-8 z-10 relative">
-    <span class="col-span-3 grid grid-rows-2">
-      <span class="row-span-2  relative">
+          <h2 class="font-altone-bold text-3xl">Infraestructura</h2>
+          <ul class="gap-4 flex flex-col mt-4 lg:text-xl text-md">
+            {
+              infraList.map((item) => (
+                <li class="bg-white text-black font-altone py-2 px-4 rounded-full">
+                  {item.nombre}
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </div>
+      <span class="relative col-span-3">
         <img
-          src={geotecnia}
+          src={infraestructura}
           alt="Landing Design"
-          class="w-full h-full object-cover rounded-tl-[128px] rounded-br-[128px] absolute block left-0 bottom-0 object-left"
+          class="w-full h-full object-cover rounded-tl-[128px] rounded-br-[128px] absolute block left-0 right-8 bottom-0 object-right-top"
         />
-
-        <span class="deep-purple w-full h-96 absolute bottom-0 -z-10 left-0"></span>
       </span>
-    </span>
-    <div class="grid grid-rows-2 col-span-4 items-center">
-      <h1 class="text-5xl font-altone pl-16"></h1>
-      <section
-        class="deep-purple text-white h-full justify-center flex flex-col py-8 pr-16 pl-10 rounded-tr-[64px] rounded-br-[64px]"
-      >
-        <h2 class="font-altone-bold text-3xl">Geotecnia</h2>
-        <ul class="gap-4 flex flex-col mt-4 text-xl">
-          {
-            infraList.map((item) => (
-              <li class="bg-white text-black font-altone py-2 px-4 rounded-full">
-                {item.nombre}
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-    </div>
+    </section>
+
+    <section
+      class="grid grid-cols-7 w-full h-[650px] lg:h-[850px] mt-48 mb-48 px-8 -z-10 absolute left-0 top-1/2"
+    >
+      <span class="col-span-3 grid grid-rows-2">
+        <span class="row-span-2 relative">
+          <img
+            src={geotecnia}
+            alt="Landing Design"
+            class="w-full h-full object-cover rounded-tl-[128px] rounded-br-[128px] absolute block left-0 bottom-0 object-left"
+          />
+
+          <span class="deep-purple w-full h-96 absolute bottom-0 -z-10 left-0"
+          ></span>
+        </span>
+      </span>
+      <div class="grid grid-rows-2 col-span-4 items-center">
+        <h1 class="text-5xl font-altone pl-16"></h1>
+        <section
+          class="deep-purple text-white h-full justify-center flex flex-col py-8 pr-10 pl-10 rounded-tr-[64px] rounded-br-[64px]"
+        >
+          <h2 class="font-altone-bold text-3xl">Geotecnia</h2>
+          <ul class="gap-4 flex flex-col mt-4 lg:text-xl text-md">
+            {
+              geoList.map((item) => (
+                <li class="bg-white text-black font-altone py-2 px-4 rounded-full">
+                  {item.nombre}
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </div>
+    </section>
   </section>
 
-  <section class="grid grid-cols-7 w-full h-[850px] mt-20 px-8 z-10 relative">
-    <div class="grid grid-rows-2 col-span-4 items-center">
-      <h1 class="text-5xl font-altone pl-16"></h1>
-      <section
-        class="soft-purple text-white py-8 pl-16 pr-16 rounded-tl-[64px]  rounded-bl-[64px] h-full flex flex-col justify-center "
-      >
-        <h2 class="font-altone-bold text-3xl">Infraestructura</h2>
-        <ul class="gap-4 flex flex-col mt-4 text-xl">
-          {
-            infraList.map((item) => (
-              <li class="bg-white text-black font-altone py-2 px-4 rounded-full">
-                {item.nombre}
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-    </div>
-    <span class="col-span-3 relative">
-      <img
-        src={mantenimiento}
-        alt="Landing Design"
-        class="w-full h-full object-cover rounded-tl-[128px] rounded-br-[128px] absolute block right-8 bottom-0 object-right"
-      />
-    </span>
-  </section>
-
-  <section class="grid grid-cols-7 w-full h-[850px] mt-20 px-8 z-10 relative">
-    <span class="col-span-3 grid grid-rows-2">
-      <span class="row-span-2  relative">
+  <section class="relative mt-96">
+    <section
+      class="grid grid-cols-7 w-full h-[650px] lg:h-[850px] mt-[400px] px-8 -z-20 relative"
+    >
+      <div class="grid grid-rows-2 col-span-4 items-center">
+        <h1 class="text-5xl font-altone pl-16"></h1>
+        <section
+          class="soft-purple text-white py-8 pl-16 pr-16 rounded-tl-[64px] rounded-bl-[64px] h-full flex flex-col justify-center"
+        >
+          <h2 class="font-altone-bold text-3xl">Mantenimiento</h2>
+          <ul class="gap-4 flex flex-col mt-4 lg:text-xl text-md">
+            {
+              mantenimientoList.map((item) => (
+                <li class="bg-white text-black font-altone py-2 px-4 rounded-full">
+                  {item.nombre}
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </div>
+      <span class="col-span-3 relative">
         <img
-          src={alquiler}
+          src={mantenimiento}
           alt="Landing Design"
-          class="w-full h-full object-cover rounded-tl-[128px] rounded-br-[128px] absolute block left-0 bottom-0 object-bottom"
+          class="w-full h-full object-cover rounded-tl-[128px] rounded-br-[128px] absolute block right-8 left-0 bottom-0 object-right"
         />
-
-        <span class="cyan w-full h-96 absolute bottom-0 -z-10 left-0"></span>
       </span>
-    </span>
-    <div class="grid grid-rows-2 col-span-4 items-center">
-      <h1 class="text-5xl font-altone pl-16"></h1>
-      <section
-        class="cyan text-white h-full justify-center flex flex-col py-8 pr-16 pl-10 rounded-tr-[64px] rounded-br-[64px]"
-      >
-        <h2 class="font-altone-bold text-3xl">Renta de Maquinaria</h2>
-        <ul class="gap-4 flex flex-col mt-4 text-xl">
-          {
-            infraList.map((item) => (
-              <li class="bg-white text-black font-altone py-2 px-4 rounded-full">
-                {item.nombre}
-              </li>
-            ))
-          }
-        </ul>
-      </section>
-    </div>
-  </section>
+    </section>
 
-  <section class="grid grid-cols-3 w-full p-8 z-10 relative">
+    <section
+      class="grid grid-cols-7 w-full h-[650px] lg:h-[850px] mt-48 px-8 -z-30 absolute left-0 top-1/2"
+    >
+      <span class="col-span-3 grid grid-rows-2">
+        <span class="row-span-2 relative">
+          <img
+            src={alquiler}
+            alt="Landing Design"
+            class="w-full h-full object-cover rounded-tl-[128px] rounded-br-[128px] absolute block left-0 bottom-0 object-left-bottom"
+          />
+
+          <span class="cyan w-full h-96 absolute bottom-0 -z-10 left-0"></span>
+        </span>
+      </span>
+      <div class="grid grid-rows-2 col-span-4 items-center">
+        <h1 class="text-5xl font-altone pl-16"></h1>
+        <section
+          class="cyan text-white h-full justify-center flex flex-col py-8 pr-16 pl-10 rounded-tr-[64px] rounded-br-[64px]"
+        >
+          <h2 class="font-altone-bold text-3xl">Renta de Maquinaria</h2>
+          <ul class="gap-4 flex flex-col mt-4 lg:text-xl text-md">
+            {
+              rentaList.map((item) => (
+                <li class="bg-white text-black font-altone py-2 px-4 rounded-full">
+                  {item.nombre}
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </div>
+    </section>
+  </section>
+  <section
+    class="grid grid-cols-3 w-full pb-32 lg:pt-36 pt-16 pr-8 z-10 relative mt-[580px] mb-[580px]"
+  >
     <span class="col-span-1"></span>
     <a
       href="/juegos"
-      class="col-span-2 deep-blue text-3xl font-altone-bold text-white pl-10 py-2 rounded-full"
-      >Juegos y dinámicas</a
+      class="col-span-2 deep-blue text-3xl font-altone-bold text-white pl-10 pr-2 py-2 rounded-full flex flex-row items-center justify-between"
+      >Juegos y dinámicas <span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          class="size-8 text-black bg-stone-50 rounded-full p-1"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m8.25 4.5 7.5 7.5-7.5 7.5"></path>
+        </svg>
+      </span></a
     >
   </section>
 </Layout>
