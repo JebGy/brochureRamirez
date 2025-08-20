@@ -197,9 +197,11 @@ function rebuild() {
 }
 function updateButtons() {
   const { total } = normalizedWeights();
-  const can = total > 0;
-  spinBtn.disabled = !can;
+  const can = total > 0 && !state.spinning;
+  if (spinBtn) spinBtn.disabled = !can;
   fastBtn.disabled = !can;
+  // Durante el giro, solo permitir el botón de reiniciar
+  resetBtn.disabled = false;
 }
 function addItem(label, weight, color) {
   if (!label) label = `Ítem ${state.items.length + 1}`;
@@ -254,6 +256,10 @@ function spin(durationMs = 3600) {
   wheelG.style.transitionDuration = `${durationMs}ms`;
   wheelG.style.transitionTimingFunction = "cubic-bezier(0.25, 0.1, 0.25, 1)";
   state.spinning = true;
+  
+  // Deshabilitar botones durante el giro
+  updateButtons();
+  
   wheelG.getBoundingClientRect();
   wheelG.style.transform = `rotate(${finalRotation}deg)`;
 
@@ -265,6 +271,9 @@ function spin(durationMs = 3600) {
     state.draws[pick.label] = (state.draws[pick.label] || 0) + 1;
     const entries = Object.entries(state.draws).sort((a, b) => b[1] - a[1]);
     historyEl.innerHTML = entries.map(([lab, c]) => `${lab}: ${c}`).join(" • ");
+    
+    // Rehabilitar botones después del giro
+    updateButtons();
   };
   wheelG.addEventListener("transitionend", onEnd);
 }
@@ -293,11 +302,26 @@ clearBtn?.addEventListener("click", () => {
   rebuild();
 });
 resetBtn?.addEventListener("click", () => {
+  // Detener cualquier animación en curso
+  if (state.spinning) {
+    wheelG.style.transition = "none";
+    state.spinning = false;
+  }
+  
   state.rotation = 0;
-  if (wheelG) wheelG.style.transform = "rotate(0deg)";
+  if (wheelG) {
+    wheelG.style.transform = "rotate(0deg)";
+    // Restaurar la transición después de un breve delay
+    setTimeout(() => {
+      wheelG.style.transition = "";
+    }, 50);
+  }
   if (resultEl) resultEl.textContent = "";
   if (historyEl) historyEl.textContent = "";
   state.draws = {};
+  
+  // Actualizar estado de botones
+  updateButtons();
 });
 spinBtn?.addEventListener("click", () => spin(3600));
 fastBtn?.addEventListener("click", () => spin(1600));
