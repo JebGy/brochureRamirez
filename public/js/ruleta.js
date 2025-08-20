@@ -31,7 +31,7 @@ const addBtn = document.getElementById("addBtn");
 const seedBtn = document.getElementById("seedBtn");
 const clearBtn = document.getElementById("clearBtn");
 
-let state = { items: [], rotation: 0, spinning: false, draws: {} };
+let state = { items: [], rotation: 0, spinning: false, draws: {}, hasResult: false };
 
 function save() {
   localStorage.setItem("weighted-wheel", JSON.stringify(state.items));
@@ -197,10 +197,10 @@ function rebuild() {
 }
 function updateButtons() {
   const { total } = normalizedWeights();
-  const can = total > 0 && !state.spinning;
+  const can = total > 0 && !state.spinning && !state.hasResult;
   if (spinBtn) spinBtn.disabled = !can;
   fastBtn.disabled = !can;
-  // Durante el giro, solo permitir el botón de reiniciar
+  // Durante el giro o después de mostrar resultado, solo permitir el botón de reiniciar
   resetBtn.disabled = false;
 }
 function addItem(label, weight, color) {
@@ -266,13 +266,14 @@ function spin(durationMs = 3600) {
   const onEnd = () => {
     wheelG.removeEventListener("transitionend", onEnd);
     state.spinning = false;
+    state.hasResult = true; // Marcar que ya hay un resultado
     state.rotation = finalRotation % 360;
     resultEl.innerHTML = `Resultado: <span class="pill">${pick.label}</span>`;
     state.draws[pick.label] = (state.draws[pick.label] || 0) + 1;
     const entries = Object.entries(state.draws).sort((a, b) => b[1] - a[1]);
     historyEl.innerHTML = entries.map(([lab, c]) => `${lab}: ${c}`).join(" • ");
     
-    // Rehabilitar botones después del giro
+    // Actualizar botones después del giro (botón permanece deshabilitado)
     updateButtons();
   };
   wheelG.addEventListener("transitionend", onEnd);
@@ -309,6 +310,7 @@ resetBtn?.addEventListener("click", () => {
   }
   
   state.rotation = 0;
+  state.hasResult = false; // Resetear el estado de resultado
   if (wheelG) {
     wheelG.style.transform = "rotate(0deg)";
     // Restaurar la transición después de un breve delay
@@ -320,7 +322,7 @@ resetBtn?.addEventListener("click", () => {
   if (historyEl) historyEl.textContent = "";
   state.draws = {};
   
-  // Actualizar estado de botones
+  // Actualizar estado de botones (rehabilitar botón de giro)
   updateButtons();
 });
 spinBtn?.addEventListener("click", () => spin(3600));
