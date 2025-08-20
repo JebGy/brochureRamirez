@@ -47,21 +47,30 @@
   font-display: swap;
 }
 
+.font-aileron{
+    font-family: "aileron-light", sans-serif;
+}	
 
-h3{
-    font-family: "altone-bold", sans-serif ;
+.font-aileron-bold{
+    font-family: "aileron-bold", sans-serif;
 }
 
-a{
-    font-family: "altone-regular", sans-serif ;
+.font-aileron-extra-bold{
+    font-family: "aileron-extra-bold", sans-serif;
 }
 
-ul{
-font-family: "aileron-light", sans-serif;
+
+
+.font-altone{
+    font-family: "altone-regular", sans-serif;
 }
 
-p{
-font-family: "aileron-light", sans-serif;
+.font-altone-bold{
+    font-family: "altone-bold", sans-serif;
+}
+
+.font-altone-extra-bold{
+    font-family: "altone-extra-bold", sans-serif;
 }
 
 canvas{ 
