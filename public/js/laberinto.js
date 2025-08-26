@@ -113,8 +113,8 @@ function drawGrid() {
   ctx.translate((W - N * cellSize) / 2, (H - N * cellSize) / 2);
   ctx.fillStyle = "#0b1326";
   ctx.fillRect(0, 0, N * cellSize, N * cellSize);
-  ctx.strokeStyle = "#334155";
-  ctx.lineWidth = 2;
+  ctx.strokeStyle = "#eafaee";
+  ctx.lineWidth = 5;
   for (let r = 0; r < N; r++) {
     for (let c = 0; c < N; c++) {
       const x = c * cellSize,
@@ -142,11 +142,11 @@ function drawGrid() {
   }
   const start = cellCenter(0, 0),
     end = cellCenter(N - 1, N - 1);
-  ctx.fillStyle = "rgba(34,197,94,.15)";
+  ctx.fillStyle = "rgba(34,240,94,.7)";
   ctx.beginPath();
   ctx.arc(start.x, start.y, cellSize * 0.42, 0, Math.PI * 2);
   ctx.fill();
-  ctx.fillStyle = "rgba(59,130,246,.15)";
+  ctx.fillStyle = "rgba(89,255,246,.8)";
   ctx.beginPath();
   ctx.arc(end.x, end.y, cellSize * 0.42, 0, Math.PI * 2);
   ctx.fill();
