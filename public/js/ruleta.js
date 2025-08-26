@@ -1,17 +1,9 @@
 const DEFAULT_ITEMS = [
-  { label: "Shaker 🥤", weight: 3 },
-  { label: "Llavero 🔑", weight: 3 },
-  { label: "Gorro 🧢", weight: 3 },
-  { label: "Llavero 🔑", weight: 3 },
-  { label: "Gorro 🧢", weight: 3 },
+  { label: "Gorro 🧢", weight: 2 },
   { label: "Libreta 📒", weight: 3 },
-  { label: "Shaker 🥤", weight: 3 },
+  { label: "Shaker 🥤", weight: 2 },
   { label: "Vuelve a girar 🎡", weight: 3 },
-  { label: "Libreta 📒", weight: 3 },
-  { label: "Perdiste 😭", weight: 3 },
-  { label: "Llavero 🔑", weight: 3 },
-  { label: "Shaker 🥤", weight: 3 },
-  { label: "Libreta 📒", weight: 3 },
+  { label: "Llavero 🔑", weight: 3},
   { label: "Perdiste 😭", weight: 3 },
 ];
 
@@ -50,7 +42,7 @@ function load() {
 }
 
 function pickColor(i) {
-  const colors = ["#476ACE", "#2DB4A5"];
+  const colors = ["#476ACE","#2DB4A5"];
   return colors[i % colors.length];
 }
 function toRadians(deg) {
@@ -122,7 +114,7 @@ function drawWheel() {
     );
     label.setAttribute("x", textPos.x);
     label.setAttribute("y", textPos.y);
-    label.setAttribute("font-size", "14");
+    label.setAttribute("font-size", "18");
     label.setAttribute("z-index", "99999");
     label.setAttribute("fill", "#ffffff");
     label.setAttribute("font-weight", "700");
@@ -147,7 +139,7 @@ function drawWheel() {
           "tspan"
         );
         tspan.setAttribute("x", textPos.x);
-        tspan.setAttribute("dy", index === 0 ? "0" : "0.2em");
+        tspan.setAttribute("dy", index === 0 ? "0" : "1rem");
         tspan.textContent = line;
         label.appendChild(tspan);
       });

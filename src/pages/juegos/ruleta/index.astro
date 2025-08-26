@@ -36,7 +36,7 @@ const DEFAULT_ITEMS = [
       .btn.danger{ background:#7f1d1d; border-color:#b91c1c; }
       .wheelWrap{ display:grid; place-items:center; width:100%; height:100%; }
       .wheelBox{ width:min(80vmin, 80vh); aspect-ratio:1/1; position:relative; }
-      .needle{ position:absolute; left:50%; top:0; transform:translate(-50%,-15%); width:0; height:0; border-left:20px solid transparent; border-right:20px solid transparent; border-bottom:32px solid #fbbf24; filter: drop-shadow(0 4px 6px rgba(0,0,0,.4)); z-index:10; }
+      .needle{ transform: rotate(180deg) !important;position:absolute; left:47%; top:0; transform:translate(-50%,-15%); width:0; height:0; border-left:20px solid transparent; border-right:20px solid transparent; border-bottom:32px solid #fbbf24; filter: drop-shadow(0 4px 6px rgba(0,0,0,.4)); z-index:10; }
       svg{ width:100%; height:100%; display:block; }
       #wheel{ transition: transform 3.6s cubic-bezier(.17,.84,.14,.99); transform-origin: 50% 50%; }
       .centerCap{ fill:#0d1326; stroke:#334155; stroke-width:2; }
