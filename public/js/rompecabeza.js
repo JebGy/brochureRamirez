@@ -8,7 +8,6 @@ const movesEl = document.getElementById("moves");
 const timeEl = document.getElementById("time");
 const toast = document.getElementById("toast");
 const shuffleBtn = document.getElementById("shuffleBtn");
-const hintBtn = document.getElementById("hintBtn");
 const gridSelect = document.getElementById("gridSelect");
 const previewImg = document.getElementById("previewImg");
 const timerDisplay = document.getElementById("timerDisplay");
@@ -197,14 +196,6 @@ function celebrate() {
 }
 
 // Event listeners
-shuffleBtn.addEventListener("click", shuffle);
-hintBtn.addEventListener("click", () => {
-  showHints = !showHints;
-  hintBtn.textContent = showHints
-    ? "Ocultar pista"
-    : "Pista (resaltar piezas correctas)";
-  render();
-});
 gridSelect.addEventListener("change", (e) => {
   setGrid(parseInt(e.target.value, 10));
 });
