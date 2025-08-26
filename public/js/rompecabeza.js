@@ -1,6 +1,6 @@
 const IMAGE_URL =
   "https://ramirezgroup.com.pe/wp-content/uploads/2023/06/logo-RAMIREZ-GROUP.png";
-const START_GRID = 4;
+const START_GRID = 3;
 const GAME_TIME_LIMIT = 30; // 20 segundos
 
 const board = document.getElementById("board");
