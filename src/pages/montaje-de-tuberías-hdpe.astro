@@ -1,0 +1,80 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+
+// Imágenes de Montaje de tuberías HDPE
+const images = [
+  {
+    src: '/MANTENIMIENTO/HDPE/06080021-54f7-42d5-9dbe-e063b0103253.png',
+    alt: 'Tubería HDPE - Proyecto 1',
+    title: 'Tubería HDPE - Proyecto 1'
+  },
+  {
+    src: '/MANTENIMIENTO/HDPE/0c19d27a-e80c-4e75-82f5-48057fa70cad.jpg',
+    alt: 'Tubería HDPE - Proyecto 2',
+    title: 'Tubería HDPE - Proyecto 2'
+  },
+  {
+    src: '/MANTENIMIENTO/HDPE/MODERNIZACIÓN DE TERMINAL PORTUARIO.jpg',
+    alt: 'Modernización de Terminal Portuario',
+    title: 'Modernización de Terminal Portuario'
+  },
+  {
+    src: '/MANTENIMIENTO/HDPE/TUBERÍAS HDPE.png',
+    alt: 'Tuberías HDPE',
+    title: 'Tuberías HDPE'
+  }
+];
+---
+
+<Layout>
+  <!-- Header Section -->
+  <section class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-5xl font-altone-bold mb-4">Montaje de Tuberías HDPE</h1>
+      <p class="text-xl opacity-90 max-w-3xl mx-auto">
+        Instalación y montaje especializado de sistemas de tuberías HDPE para aplicaciones industriales y de infraestructura.
+      </p>
+      <div class="mt-8">
+        <a href="/" class="inline-flex items-center text-white hover:text-blue-200 transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Volver al inicio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <GalleryGrid images={images} />
+</Layout>
+
+<style>
+  /* Estilos adicionales para el diseño tipo Pinterest */
+  :global(.gallery-item) {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    :global(.grid) {
+      column-count: 2;
+      column-gap: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    :global(.grid) {
+      column-count: 3;
+      column-gap: 2rem;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    :global(.grid) {
+      column-count: 4;
+      column-gap: 2rem;
+    }
+  }
+</style>

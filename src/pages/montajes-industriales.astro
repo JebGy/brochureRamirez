@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+
+// Imágenes de Montajes Industriales
+const images = [
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/MONTAJES INDUSTRIALES/7e8f8a4a-6709-43ce-adb4-0604cfd13b93 (1).jpg',
+    alt: 'Montaje Industrial - Proyecto 1',
+    title: 'Montaje Industrial - Proyecto 1'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/MONTAJES INDUSTRIALES/CONSTRUCCIÓN DE OFICINAS Y ALMACENES.jpg',
+    alt: 'Construcción de Oficinas y Almacenes',
+    title: 'Construcción de Oficinas y Almacenes'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/MONTAJES INDUSTRIALES/MODERNIZACIÓN DE TERMINAL PORTUARIO.jpg',
+    alt: 'Modernización de Terminal Portuario',
+    title: 'Modernización de Terminal Portuario'
+  }
+];
+---
+
+<Layout>
+  <!-- Header Section -->
+  <section class="bg-gradient-to-r from-indigo-600 to-purple-70 bg-black mb-8 text-white py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-5xl font-altone-bold mb-4">Montajes Industriales</h1>
+      <p class="text-xl opacity-90 max-w-3xl mx-auto">
+        Servicios especializados en montaje de equipos industriales, instalaciones portuarias y construcción de facilidades operativas.
+      </p>
+      <div class="mt-8">
+        <a href="/" class="inline-flex items-center text-white hover:text-indigo-200 transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Volver al inicio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <GalleryGrid images={images} />
+</Layout>
+
+<style>
+  /* Estilos adicionales para el diseño tipo Pinterest */
+  :global(.gallery-item) {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    :global(.grid) {
+      column-count: 2;
+      column-gap: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    :global(.grid) {
+      column-count: 3;
+      column-gap: 2rem;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    :global(.grid) {
+      column-count: 4;
+      column-gap: 2rem;
+    }
+  }
+</style>

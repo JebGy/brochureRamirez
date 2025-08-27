@@ -1,0 +1,95 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+
+// Imágenes de Estructuras Metálicas
+const images = [
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/ESTRUCTURAS METÁLICAS/77ec7c65-a588-45f0-8c84-f3860be7b3c7.jpg',
+    alt: 'Estructura Metálica - Proyecto 1',
+    title: 'Estructura Metálica - Proyecto 1'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/ESTRUCTURAS METÁLICAS/8d4344c7-4bb3-4af3-87f2-60ba52e1d8b5.jpg',
+    alt: 'Estructura Metálica - Proyecto 2',
+    title: 'Estructura Metálica - Proyecto 2'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/ESTRUCTURAS METÁLICAS/CAMPAMENTO MINERO MODULAR.jpg',
+    alt: 'Campamento Minero Modular',
+    title: 'Campamento Minero Modular'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/ESTRUCTURAS METÁLICAS/MONTAJE DE ESTRUCTURAS METÁLICAS.jpg',
+    alt: 'Montaje de Estructuras Metálicas',
+    title: 'Montaje de Estructuras Metálicas'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/ESTRUCTURAS METÁLICAS/PATIO DE RESIDUOS.jpg',
+    alt: 'Patio de Residuos',
+    title: 'Patio de Residuos'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/ESTRUCTURAS METÁLICAS/bc93c735-e285-4694-901e-ba399db09233.jpg',
+    alt: 'Estructura Metálica - Proyecto 3',
+    title: 'Estructura Metálica - Proyecto 3'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/ESTRUCTURAS METÁLICAS/f352be31-8269-4d61-adbf-e12a53fdafae.jpg',
+    alt: 'Estructura Metálica - Proyecto 4',
+    title: 'Estructura Metálica - Proyecto 4'
+  }
+];
+---
+
+<Layout>
+  <!-- Header Section -->
+  <section class="bg-gradient-to-r from-gray-700 to-gray-900 text-white py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-5xl font-altone-bold mb-4">Estructuras Metálicas</h1>
+      <p class="text-xl opacity-90 max-w-3xl mx-auto">
+        Diseño, fabricación y montaje de estructuras metálicas para proyectos industriales y mineros de alta complejidad.
+      </p>
+      <div class="mt-8">
+        <a href="/" class="inline-flex items-center text-white hover:text-gray-300 transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Volver al inicio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <GalleryGrid images={images} />
+</Layout>
+
+<style>
+  /* Estilos adicionales para el diseño tipo Pinterest */
+  :global(.gallery-item) {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    :global(.grid) {
+      column-count: 2;
+      column-gap: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    :global(.grid) {
+      column-count: 3;
+      column-gap: 2rem;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    :global(.grid) {
+      column-count: 4;
+      column-gap: 2rem;
+    }
+  }
+</style>

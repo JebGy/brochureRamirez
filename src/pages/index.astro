@@ -17,10 +17,10 @@ const infraList = [
 ];
 
 const geoList = [
-  { nombre: "Mejora de Suelos", link: "/geotecnia" },
-  { nombre: "Estabilización de taludes", link: "/mantenimiento" },
-  { nombre: "Cimentaciones profundas", link: "/alquiler" },
-  { nombre: "Estabilidad de excavaciones", link: "/infraestructura" },
+  { nombre: "Mejora de Suelos", link: "/mejora-de-suelos" },
+  { nombre: "Estabilización de taludes", link: "/estabilizacion-de-taludes" },
+  { nombre: "Cimentaciones profundas", link: "/cimentaciones-profundas" },
+  { nombre: "Estabilidad de excavaciones", link: "/estabilidad-de-excavaciones" },
 ];
 
 const mantenimientoList = [
@@ -88,9 +88,9 @@ const rentaList = [
           <ul class="gap-4 flex flex-col mt-4 lg:text-xl text-md">
             {
               infraList.map((item) => (
-                <li class="bg-white text-black font-altone py-2 px-4 rounded-full">
+                <a href={item.link} class="bg-white text-black font-altone py-2 px-4 rounded-full">
                   {item.nombre}
-                </li>
+                </a>
               ))
             }
           </ul>
@@ -129,9 +129,9 @@ const rentaList = [
           <ul class="gap-4 flex flex-col mt-4 lg:text-xl text-md">
             {
               geoList.map((item) => (
-                <li class="bg-white text-black font-altone py-2 px-4 rounded-full">
+                <a href={item.link} class="bg-white text-black font-altone py-2 px-4 rounded-full">
                   {item.nombre}
-                </li>
+                </a>
               ))
             }
           </ul>
@@ -153,9 +153,9 @@ const rentaList = [
           <ul class="gap-4 flex flex-col mt-4 lg:text-xl text-md">
             {
               mantenimientoList.map((item) => (
-                <li class="bg-white text-black font-altone py-2 px-4 rounded-full">
+                <a href={item.link} class="bg-white text-black font-altone py-2 px-4 rounded-full">
                   {item.nombre}
-                </li>
+                </a>
               ))
             }
           </ul>
@@ -193,9 +193,9 @@ const rentaList = [
           <ul class="gap-4 flex flex-col mt-4 lg:text-xl text-md">
             {
               rentaList.map((item) => (
-                <li class="bg-white text-black font-altone py-2 px-4 rounded-full">
+                <a href={item.link} class="bg-white text-black font-altone py-2 px-4 rounded-full">
                   {item.nombre}
-                </li>
+                </a>
               ))
             }
           </ul>

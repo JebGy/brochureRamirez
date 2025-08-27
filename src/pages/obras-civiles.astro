@@ -1,0 +1,135 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+
+// Imágenes de Obras Civiles
+const images = [
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/OBRAS CIVILES/COLOCACIÓN DE ASFALTO.jpg',
+    alt: 'Colocación de Asfalto',
+    title: 'Colocación de Asfalto'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/OBRAS CIVILES/CONSTRUCCIÓN DE ALMACENES Y OFICINAS.jpg',
+    alt: 'Construcción de Almacenes y Oficinas',
+    title: 'Construcción de Almacenes y Oficinas'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/OBRAS CIVILES/CONSTRUCCIÓN DE OFICINAS Y ALMACENES.jpg',
+    alt: 'Construcción de Oficinas y Almacenes',
+    title: 'Construcción de Oficinas y Almacenes'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/OBRAS CIVILES/ENCOFRADO PARA INSTALACIÓN DE POZO A TIERRA.jpg',
+    alt: 'Encofrado para Instalación de Pozo a Tierra',
+    title: 'Encofrado para Instalación de Pozo a Tierra'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/OBRAS CIVILES/ENCOFRADO Y VACIADO DE CONCRETO.jpg',
+    alt: 'Encofrado y Vaciado de Concreto',
+    title: 'Encofrado y Vaciado de Concreto'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/OBRAS CIVILES/LOSAS DE TOSTACIÓN.jpg',
+    alt: 'Losas de Tostación',
+    title: 'Losas de Tostación'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/OBRAS CIVILES/MODERNIZACIÓN DE TERMINAL PORTUARIO(1).jpg',
+    alt: 'Modernización de Terminal Portuario',
+    title: 'Modernización de Terminal Portuario'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/OBRAS CIVILES/MODERNIZACIÓN DE TERMINAL PORTUARIO.jpg',
+    alt: 'Modernización de Terminal Portuario',
+    title: 'Modernización de Terminal Portuario'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/OBRAS CIVILES/OBRAS VIALES EN REFINERÍA(1).jpg',
+    alt: 'Obras Viales en Refinería',
+    title: 'Obras Viales en Refinería'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/OBRAS CIVILES/OBRAS VIALES EN REFINERÍA.jpg',
+    alt: 'Obras Viales en Refinería',
+    title: 'Obras Viales en Refinería'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/OBRAS CIVILES/REPARACIÓN DE ESPESADOR EN REFINERÍA.jpg',
+    alt: 'Reparación de Espesador en Refinería',
+    title: 'Reparación de Espesador en Refinería'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/OBRAS CIVILES/TENDIDO DE POZO A TIERRA.jpg',
+    alt: 'Tendido de Pozo a Tierra',
+    title: 'Tendido de Pozo a Tierra'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/OBRAS CIVILES/TENDIDO ELÉCTRICO SUBTERRÁNEO.jpg',
+    alt: 'Tendido Eléctrico Subterráneo',
+    title: 'Tendido Eléctrico Subterráneo'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/OBRAS CIVILES/VACIADO DE CONCRETO EN LOSAS.jpg',
+    alt: 'Vaciado de Concreto en Losas',
+    title: 'Vaciado de Concreto en Losas'
+  },
+  {
+    src: '/INFRAESTRUCTURA/INFRAESTRUCTURA/OBRAS CIVILES/VACIADO DE CONCRETO.jpg',
+    alt: 'Vaciado de Concreto',
+    title: 'Vaciado de Concreto'
+  }
+];
+---
+
+<Layout>
+  <!-- Header Section -->
+  <section class="bg-gradient-to-r from-cyan-600 to-blue-700 text-white py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-5xl font-altone-bold mb-4">Obras Civiles</h1>
+      <p class="text-xl opacity-90 max-w-3xl mx-auto">
+        Proyectos de construcción civil que incluyen infraestructura vial, edificaciones industriales y obras de concreto especializadas.
+      </p>
+      <div class="mt-8">
+        <a href="/" class="inline-flex items-center text-white hover:text-cyan-200 transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Volver al inicio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <GalleryGrid images={images} />
+</Layout>
+
+<style>
+  /* Estilos adicionales para el diseño tipo Pinterest */
+  :global(.gallery-item) {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    :global(.grid) {
+      column-count: 2;
+      column-gap: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    :global(.grid) {
+      column-count: 3;
+      column-gap: 2rem;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    :global(.grid) {
+      column-count: 4;
+      column-gap: 2rem;
+    }
+  }
+</style>

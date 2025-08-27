@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+
+// Imágenes de Fajas Transportadoras
+const images = [
+  {
+    src: '/MANTENIMIENTO/FAJAS TRANSPORTADORAS/0fa399d5-7839-4ab5-bd12-cd619ececaca.jpg',
+    alt: 'Faja Transportadora - Proyecto 1',
+    title: 'Faja Transportadora - Proyecto 1'
+  },
+  {
+    src: '/MANTENIMIENTO/FAJAS TRANSPORTADORAS/3dd27291-ef16-4651-8c02-39b7cf698a45.jpg',
+    alt: 'Faja Transportadora - Proyecto 2',
+    title: 'Faja Transportadora - Proyecto 2'
+  },
+  {
+    src: '/MANTENIMIENTO/FAJAS TRANSPORTADORAS/51749ed2-7a06-44fc-b808-8b716957d964.jpg',
+    alt: 'Faja Transportadora - Proyecto 3',
+    title: 'Faja Transportadora - Proyecto 3'
+  },
+  {
+    src: '/MANTENIMIENTO/FAJAS TRANSPORTADORAS/96701637-28f0-4246-ae4e-d732df4103ae.jpg',
+    alt: 'Faja Transportadora - Proyecto 4',
+    title: 'Faja Transportadora - Proyecto 4'
+  },
+  {
+    src: '/MANTENIMIENTO/FAJAS TRANSPORTADORAS/FAJAS TRANSPORTADORAS.jpg',
+    alt: 'Fajas Transportadoras',
+    title: 'Fajas Transportadoras'
+  },
+  {
+    src: '/MANTENIMIENTO/FAJAS TRANSPORTADORAS/ba4eb475-31ac-489e-a4f7-dfd576ec9efd.jpg',
+    alt: 'Faja Transportadora - Proyecto 5',
+    title: 'Faja Transportadora - Proyecto 5'
+  }
+];
+---
+
+<Layout>
+  <!-- Header Section -->
+  <section class="bg-gradient-to-r from-orange-600 to-red-700 text-white py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-5xl font-altone-bold mb-4">Fajas Transportadoras</h1>
+      <p class="text-xl opacity-90 max-w-3xl mx-auto">
+        Mantenimiento, reparación e instalación de sistemas de fajas transportadoras para operaciones mineras e industriales.
+      </p>
+      <div class="mt-8">
+        <a href="/" class="inline-flex items-center text-white hover:text-orange-200 transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Volver al inicio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <GalleryGrid images={images} />
+</Layout>
+
+<style>
+  /* Estilos adicionales para el diseño tipo Pinterest */
+  :global(.gallery-item) {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    :global(.grid) {
+      column-count: 2;
+      column-gap: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    :global(.grid) {
+      column-count: 3;
+      column-gap: 2rem;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    :global(.grid) {
+      column-count: 4;
+      column-gap: 2rem;
+    }
+  }
+</style>

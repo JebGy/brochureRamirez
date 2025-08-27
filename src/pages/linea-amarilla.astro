@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+
+// Imágenes de Línea Amarilla
+const images = [
+  {
+    src: '/ALQUILER DE EQUIPOS/ALQUILER DE EQUIPOS/LINEA AMARILLA/528419b6-cdb9-48e4-ab9a-de5ccc954bac.jpg',
+    alt: 'Línea Amarilla - Proyecto 1',
+    title: 'Línea Amarilla - Proyecto 1'
+  },
+  {
+    src: '/ALQUILER DE EQUIPOS/ALQUILER DE EQUIPOS/LINEA AMARILLA/7382cc31-de82-4a6a-a850-6bf2013088d4.jpg',
+    alt: 'Línea Amarilla - Proyecto 2',
+    title: 'Línea Amarilla - Proyecto 2'
+  },
+  {
+    src: '/ALQUILER DE EQUIPOS/ALQUILER DE EQUIPOS/LINEA AMARILLA/EXCAVADORA.jpg',
+    alt: 'Excavadora',
+    title: 'Excavadora'
+  },
+  {
+    src: '/ALQUILER DE EQUIPOS/ALQUILER DE EQUIPOS/LINEA AMARILLA/RETROEXCAVADORA Y CAMIÓN VOLQUETE.jpg',
+    alt: 'Retroexcavadora y Camión Volquete',
+    title: 'Retroexcavadora y Camión Volquete'
+  },
+  {
+    src: '/ALQUILER DE EQUIPOS/ALQUILER DE EQUIPOS/LINEA AMARILLA/RETROEXCAVADORA(1).jpg',
+    alt: 'Retroexcavadora',
+    title: 'Retroexcavadora'
+  },
+  {
+    src: '/ALQUILER DE EQUIPOS/ALQUILER DE EQUIPOS/LINEA AMARILLA/RETROEXCAVADORA.jpg',
+    alt: 'Retroexcavadora',
+    title: 'Retroexcavadora'
+  }
+];
+---
+
+<Layout>
+  <!-- Header Section -->
+  <section class="bg-gradient-to-r from-yellow-500 to-amber-600 text-white py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-5xl font-altone-bold mb-4">Línea Amarilla</h1>
+      <p class="text-xl opacity-90 max-w-3xl mx-auto">
+        Alquiler de maquinaria pesada incluyendo excavadoras, retroexcavadoras y equipos de movimiento de tierra.
+      </p>
+      <div class="mt-8">
+        <a href="/" class="inline-flex items-center text-white hover:text-yellow-200 transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Volver al inicio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <GalleryGrid images={images} />
+</Layout>
+
+<style>
+  /* Estilos adicionales para el diseño tipo Pinterest */
+  :global(.gallery-item) {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    :global(.grid) {
+      column-count: 2;
+      column-gap: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    :global(.grid) {
+      column-count: 3;
+      column-gap: 2rem;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    :global(.grid) {
+      column-count: 4;
+      column-gap: 2rem;
+    }
+  }
+</style>

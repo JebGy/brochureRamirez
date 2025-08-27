@@ -1,0 +1,85 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GalleryGrid from '../components/GalleryGrid.astro';
+
+// Imágenes de Camiones Grúa
+const images = [
+  {
+    src: '/ALQUILER DE EQUIPOS/ALQUILER DE EQUIPOS/CAMIONES GRUA/1dce16d6-5298-47c8-a638-ac9eadb19ae9.jpg',
+    alt: 'Camión Grúa - Proyecto 1',
+    title: 'Camión Grúa - Proyecto 1'
+  },
+  {
+    src: '/ALQUILER DE EQUIPOS/ALQUILER DE EQUIPOS/CAMIONES GRUA/558634f9-1480-425a-98ed-707ee5d5ddcd.jpg',
+    alt: 'Camión Grúa - Proyecto 2',
+    title: 'Camión Grúa - Proyecto 2'
+  },
+  {
+    src: '/ALQUILER DE EQUIPOS/ALQUILER DE EQUIPOS/CAMIONES GRUA/60fc7583-ba7d-42f8-b61f-28d6640bc9dd.jpg',
+    alt: 'Camión Grúa - Proyecto 3',
+    title: 'Camión Grúa - Proyecto 3'
+  },
+  {
+    src: '/ALQUILER DE EQUIPOS/ALQUILER DE EQUIPOS/CAMIONES GRUA/89530338-e6e3-4fa9-a9ac-1af50b857c67 (1).jpg',
+    alt: 'Camión Grúa - Proyecto 4',
+    title: 'Camión Grúa - Proyecto 4'
+  },
+  {
+    src: '/ALQUILER DE EQUIPOS/ALQUILER DE EQUIPOS/CAMIONES GRUA/CAMIÓN GRÚA 12TN.jpg',
+    alt: 'Camión Grúa 12TN',
+    title: 'Camión Grúa 12TN'
+  }
+];
+---
+
+<Layout>
+  <!-- Header Section -->
+  <section class="bg-gradient-to-r from-yellow-600 to-orange-600 text-white py-20">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-5xl font-altone-bold mb-4">Camiones Grúa</h1>
+      <p class="text-xl opacity-90 max-w-3xl mx-auto">
+        Alquiler de camiones grúa de diferentes capacidades para proyectos de construcción y montaje industrial.
+      </p>
+      <div class="mt-8">
+        <a href="/" class="inline-flex items-center text-white hover:text-yellow-200 transition-colors">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          Volver al inicio
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <GalleryGrid images={images} />
+</Layout>
+
+<style>
+  /* Estilos adicionales para el diseño tipo Pinterest */
+  :global(.gallery-item) {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+  
+  @media (min-width: 768px) {
+    :global(.grid) {
+      column-count: 2;
+      column-gap: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    :global(.grid) {
+      column-count: 3;
+      column-gap: 2rem;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    :global(.grid) {
+      column-count: 4;
+      column-gap: 2rem;
+    }
+  }
+</style>
