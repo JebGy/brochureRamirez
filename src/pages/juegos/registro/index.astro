@@ -1,0 +1,175 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+---
+
+<Layout>
+  <main class="min-h-screen  deep-blue flex items-center justify-center py-12 px-4">
+    <div class="w-2xl max-w-md mt-16 ">
+      <!-- Header del formulario -->
+      <div class="text-center mb-8">
+        <h1 class="text-4xl font-altone-bold text-white mb-2">
+          Registro de <span class="text-cyan">Jugador</span>
+        </h1>
+        <p class="text-white font-aileron text-lg opacity-80">
+          Completa tus datos para participar en los juegos
+        </p>
+      </div>
+
+      <!-- Formulario -->
+      <form 
+        class="bg-white rounded-3xl p-8 shadow-2xl w-96"
+        method="POST"
+        action="/api/registro-jugador"
+      >
+        <!-- Nombres completos -->
+        <div class="mb-6">
+          <label 
+            for="nombres" 
+            class="block text-deep-blue font-altone-bold text-lg mb-3"
+          >
+            Nombres Completos
+          </label>
+          <input
+            type="text"
+            id="nombres"
+            name="nombres"
+            required
+            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan focus:outline-none transition-colors duration-300 font-aileron text-lg"
+            placeholder="Ingresa tu nombre completo"
+          />
+        </div>
+
+        <!-- Apellidos completos -->
+        <div class="mb-6">
+          <label 
+            for="apellidos" 
+            class="block text-deep-blue font-altone-bold text-lg mb-3"
+          >
+            Apellidos Completos
+          </label>
+          <input
+            type="text"
+            id="apellidos"
+            name="apellidos"
+            required
+            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan focus:outline-none transition-colors duration-300 font-aileron text-lg"
+            placeholder="Ingresa tus apellidos completos"
+          />
+        </div>
+
+        <!-- Correo electrónico -->
+        <div class="mb-6">
+          <label 
+            for="correo" 
+            class="block text-deep-blue font-altone-bold text-lg mb-3"
+          >
+            Correo Electrónico
+          </label>
+          <input
+            type="email"
+            id="correo"
+            name="correo"
+            required
+            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan focus:outline-none transition-colors duration-300 font-aileron text-lg"
+            placeholder="ejemplo@correo.com"
+          />
+        </div>
+
+        <!-- Número de teléfono -->
+        <div class="mb-8">
+          <label 
+            for="telefono" 
+            class="block text-deep-blue font-altone-bold text-lg mb-3"
+          >
+            Número de Teléfono
+          </label>
+          <input
+            type="tel"
+            id="telefono"
+            name="telefono"
+            required
+            pattern="[0-9]{9,15}"
+            class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-cyan focus:outline-none transition-colors duration-300 font-aileron text-lg"
+            placeholder="987654321"
+          />
+        </div>
+
+        <!-- Botón de envío -->
+        <button
+          type="submit"
+          class="w-full cyan text-white font-altone-bold text-xl py-4 rounded-full p-2 mb-4 hover:opacity-90 transition-opacity duration-300 shadow-lg"
+        >
+          Registrar Jugador
+        </button>
+
+        <!-- Enlace para volver -->
+        <div class="text-center mt-6">
+          <a 
+            href="/juegos" 
+            class="text-deep-purple font-aileron text-lg hover:text-cyan transition-colors duration-300"
+          >
+            ← Volver a los juegos
+          </a>
+        </div>
+      </form>
+
+      <!-- Información adicional -->
+      <div class="text-center mt-8">
+        <p class="text-white font-aileron opacity-70">
+          Tus datos están seguros y solo se utilizarán para el registro en los juegos.
+        </p>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="/js/registro-jugador.js"></script>
+</Layout>
+
+<style>
+  /* Estilos adicionales para mejorar la experiencia del usuario */
+  input:focus {
+    box-shadow: 0 0 0 3px rgba(45, 180, 165, 0.1);
+  }
+  
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(45, 180, 165, 0.3);
+  }
+  
+  button:active {
+    transform: translateY(0);
+  }
+  
+  /* Animación suave para el formulario */
+  form {
+    animation: slideUp 0.6s ease-out;
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Responsive design */
+  @media (max-width: 640px) {
+    form {
+      padding: 1.5rem;
+      margin: 1rem;
+    }
+    
+    h1 {
+      font-size: 2rem;
+    }
+    
+    input, button {
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+    }
+  }
+</style>
+
