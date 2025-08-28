@@ -33,27 +33,54 @@ const images = [
 ---
 
 <Layout>
-  <!-- Header Section -->
-  <section class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white py-20">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-5xl font-altone-bold mb-4">Vías de Acceso</h1>
-      <p class="text-xl opacity-90 max-w-3xl mx-auto">
-        Construcción y mantenimiento de vías de acceso para facilidades industriales y centros de operaciones.
-      </p>
-      <div class="mt-8">
-        <a href="/" class="inline-flex items-center text-white hover:text-emerald-200 transition-colors">
-          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-          </svg>
-          Volver al inicio
-        </a>
-      </div>
+  <!-- Header Section - Estilo Sunzine -->
+  <header class="sunzine-header">
+    <!-- Título principal -->
+    <div class="hero-section">
+      <h1 class="hero-title">VÍAS DE ACCESO</h1>
     </div>
-  </section>
+  </header>
 
   <!-- Gallery Section -->
   <GalleryGrid images={images} />
 </Layout>
+
+<style>
+  /* Estilos Sunzine */
+  .sunzine-header {
+    background: linear-gradient(0deg, #FFF 0%, #e9ecef 100%);
+    min-height: 20vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .hero-title {
+    font-family: 'Altone Trial-Bold', sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 0 0 1rem 0;
+    line-height: 1.2;
+    max-width: 800px;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+  }
+</style>
 
 <style>
   /* Estilos adicionales para el diseño tipo Pinterest */
@@ -61,21 +88,21 @@ const images = [
     break-inside: avoid;
     margin-bottom: 1.5rem;
   }
-  
+
   @media (min-width: 768px) {
     :global(.grid) {
       column-count: 2;
       column-gap: 1.5rem;
     }
   }
-  
+
   @media (min-width: 1024px) {
     :global(.grid) {
       column-count: 3;
       column-gap: 2rem;
     }
   }
-  
+
   @media (min-width: 1280px) {
     :global(.grid) {
       column-count: 4;

@@ -126,10 +126,10 @@ const rentaList = [
           class="deep-purple text-white h-full justify-center flex flex-col py-8 pr-10 pl-10 rounded-tr-[64px] rounded-br-[64px]"
         >
           <h2 class="font-altone-bold text-3xl">Geotecnia</h2>
-          <ul class="gap-4 flex flex-col mt-4 lg:text-xl text-md">
+          <ul class="gap-4 flex flex-col mt-4 lg:text-xl text-md ">
             {
               geoList.map((item) => (
-                <a href={item.link} class="bg-white text-black font-altone py-2 px-4 rounded-full">
+                <a href={item.link} class="bg-white z-20 text-black font-altone py-2 px-4 rounded-full">
                   {item.nombre}
                 </a>
               ))
@@ -150,7 +150,7 @@ const rentaList = [
           class="soft-purple text-white py-8 pl-16 pr-16 rounded-tl-[64px] rounded-bl-[64px] h-full flex flex-col justify-center"
         >
           <h2 class="font-altone-bold text-3xl">Mantenimiento</h2>
-          <ul class="gap-4 flex flex-col mt-4 lg:text-xl text-md">
+          <ul class="gap-4 flex flex-col mt-4 lg:text-xl text-md z-[9999]">
             {
               mantenimientoList.map((item) => (
                 <a href={item.link} class="bg-white text-black font-altone py-2 px-4 rounded-full">
@@ -190,7 +190,7 @@ const rentaList = [
           class="cyan text-white h-full justify-center flex flex-col py-8 pr-16 pl-10 rounded-tr-[64px] rounded-br-[64px]"
         >
           <h2 class="font-altone-bold text-3xl">Renta de Maquinaria</h2>
-          <ul class="gap-4 flex flex-col mt-4 lg:text-xl text-md">
+          <ul class="gap-4 flex flex-col mt-4 lg:text-xl text-md z-[9999]">
             {
               rentaList.map((item) => (
                 <a href={item.link} class="bg-white text-black font-altone py-2 px-4 rounded-full">
