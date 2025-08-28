@@ -4,8 +4,8 @@ import GalleryItem from './GalleryItem.astro';
 const { images } = Astro.props;
 ---
 
-<section class="px-4 md:px-8 lg:px-16 xl:px-24 pb-20">
-  <div id="masonry-grid" class="masonry-grid">
+<section class="px-4 md:px-8 lg:px-16 xl:px-24 pb-20 h-full">
+  <div id="masonry-grid" class="masonry-grid h-full p-8">
     {images.map((image: { src: string; alt: string; title: string }, index: number) => (
       <GalleryItem 
         image={image} 
@@ -103,5 +103,5 @@ const { images } = Astro.props;
       ›
     </button>
   </div>
-  <script src="/js/gallery-modal.js"></script>
+  <script type="module" src="/js/gallery-modal.js"></script>
 </div>
