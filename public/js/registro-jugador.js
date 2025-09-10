@@ -1,5 +1,5 @@
 // Configuración para el registro de jugadores
-import { supabase } from '../db/supabase.js';
+import { supabase } from '../../src/db/supabase.js';
 
 // Validación adicional del formulario de registro de jugadores
 document.addEventListener("DOMContentLoaded", function () {
