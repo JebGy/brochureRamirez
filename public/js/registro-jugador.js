@@ -1,7 +1,5 @@
 // Configuración para el registro de jugadores
-
-
-
+import { supabase } from '../db/supabase.js';
 
 // Validación adicional del formulario de registro de jugadores
 document.addEventListener("DOMContentLoaded", function () {
@@ -58,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Función para guardar datos del jugador usando la API
+// Función para guardar datos del jugador usando Supabase
 async function savePlayerData(playerData) {
   console.log('Iniciando registro de jugador:', playerData);
   
@@ -71,30 +69,26 @@ async function savePlayerData(playerData) {
     submitButton.textContent = 'Guardando...';
     submitButton.disabled = true;
 
-    console.log('Enviando datos a la API...');
+    console.log('Enviando datos a Supabase...');
     
-    // Enviar datos a la API
-    const response = await fetch('/api/registrar', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        nombres: playerData.nombres,
-        apellidos: playerData.apellidos,
-        telefono: playerData.telefono,
-        correo: playerData.correo
-      })
-    });
+    // Insertar datos en Supabase
+    const { data, error } = await supabase
+      .from('jugadores')
+      .insert([
+        {
+          nombres: playerData.nombres,
+          apellidos: playerData.apellidos,
+          telefono: playerData.telefono,
+          correo: playerData.correo
+        }
+      ]);
 
-    const result = await response.json();
-
-    if (!response.ok || !result.success) {
-      console.error('Error de la API:', result);
-      throw new Error(result.error || 'Error desconocido');
+    if (error) {
+      console.error('Error de Supabase:', error);
+      throw error;
     }
 
-    console.log('Datos guardados exitosamente:', result.data);
+    console.log('Datos guardados exitosamente:', data);
     
     // Éxito: guardar también en localStorage como respaldo
     localStorage.setItem('jugador', JSON.stringify(playerData));
