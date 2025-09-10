@@ -1,5 +1,7 @@
 // Configuración de Supabase client
-import { supabase } from './supabase.js';
+
+import { supabase } from "../../src/lib/supabase.js";
+
 
 
 
@@ -60,6 +62,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Función para guardar datos del jugador en Supabase
 async function savePlayerData(playerData) {
+  console.log('Iniciando registro de jugador:', playerData);
+  
   // Obtener referencia al botón y guardar texto original
   const submitButton = document.querySelector('button[type="submit"]');
   const originalText = submitButton.textContent;
@@ -69,6 +73,8 @@ async function savePlayerData(playerData) {
     submitButton.textContent = 'Guardando...';
     submitButton.disabled = true;
 
+    console.log('Conectando con Supabase...');
+    
     // Insertar datos en Supabase
     const { data, error } = await supabase
       .from('jugadores')
@@ -84,9 +90,12 @@ async function savePlayerData(playerData) {
       .select();
 
     if (error) {
+      console.error('Error de Supabase:', error);
       throw error;
     }
 
+    console.log('Datos guardados exitosamente en Supabase:', data);
+    
     // Éxito: guardar también en localStorage como respaldo
     localStorage.setItem('jugador', JSON.stringify(playerData));
     
@@ -94,7 +103,10 @@ async function savePlayerData(playerData) {
     window.location.href = '/juegos';
 
   } catch (error) {
-    console.error('Error al guardar en Supabase:', error);
+    console.error('Error completo al guardar:', error);
+    console.error('Tipo de error:', typeof error);
+    console.error('Mensaje del error:', error.message);
+    console.error('Código del error:', error.code);
     
     // Manejar diferentes tipos de errores
     let errorMessage = 'Registro completado. Los datos se han guardado localmente.';
