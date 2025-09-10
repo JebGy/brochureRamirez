@@ -1,6 +1,4 @@
-// Configuración de Supabase client
-
-import { supabase } from "../../src/lib/supabase.js";
+// Configuración para el registro de jugadores
 
 
 
@@ -60,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Función para guardar datos del jugador en Supabase
+// Función para guardar datos del jugador usando la API
 async function savePlayerData(playerData) {
   console.log('Iniciando registro de jugador:', playerData);
   
@@ -73,28 +71,30 @@ async function savePlayerData(playerData) {
     submitButton.textContent = 'Guardando...';
     submitButton.disabled = true;
 
-    console.log('Conectando con Supabase...');
+    console.log('Enviando datos a la API...');
     
-    // Insertar datos en Supabase
-    const { data, error } = await supabase
-      .from('jugadores')
-      .insert([
-        {
-          nombres: playerData.nombres,
-          apellidos: playerData.apellidos,
-          telefono: playerData.telefono,
-          correo: playerData.correo,
-          fecha_registro: new Date().toISOString()
-        }
-      ])
-      .select();
+    // Enviar datos a la API
+    const response = await fetch('/api/registrar', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        nombres: playerData.nombres,
+        apellidos: playerData.apellidos,
+        telefono: playerData.telefono,
+        correo: playerData.correo
+      })
+    });
 
-    if (error) {
-      console.error('Error de Supabase:', error);
-      throw error;
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      console.error('Error de la API:', result);
+      throw new Error(result.error || 'Error desconocido');
     }
 
-    console.log('Datos guardados exitosamente en Supabase:', data);
+    console.log('Datos guardados exitosamente:', result.data);
     
     // Éxito: guardar también en localStorage como respaldo
     localStorage.setItem('jugador', JSON.stringify(playerData));
@@ -106,7 +106,6 @@ async function savePlayerData(playerData) {
     console.error('Error completo al guardar:', error);
     console.error('Tipo de error:', typeof error);
     console.error('Mensaje del error:', error.message);
-    console.error('Código del error:', error.code);
     
     // Manejar diferentes tipos de errores
     let errorMessage = 'Registro completado. Los datos se han guardado localmente.';
