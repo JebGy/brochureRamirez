@@ -1,7 +1,7 @@
 const DEFAULT_ITEMS = [
   { label: "Shaker 🥤", weight: 2 },
   { label: "Libreta 📒", weight: 2 },
-  { label: "Cuaderno 📓", weight: 1 },
+  { label: "Cuaderno 📓", weight: 2 },
   { label: "Bolsa 👜", weight: 3 },
   { label: "Llavero 🔑", weight: 4 },
   { label: "Vuelve a girar 🎡", weight: 3 },
