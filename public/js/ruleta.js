@@ -1,10 +1,10 @@
 const DEFAULT_ITEMS = [
-  { label: "Llavero 🔑", weight: 2 },
-    { label: "Libreta 📒", weight: 2 }, 
+  { label: "Llavero 🔑", weight: 3},
+    { label: "Libreta 📒", weight: 3 }, 
   { label: "Vuelve a girar 🎡", weight: 3 },
-  { label: "Libreta 📒", weight: 2 },
-  { label: "Juguete antiestrés 🪀", weight: 1 },
-  { label: "Shaker 🥤", weight: 2 }
+  { label: "Libreta 📒", weight: 3 },
+  { label: "Juguete antiestrés 🪀", weight: 2 },
+  { label: "Shaker 🥤", weight: 1 }
 ];
 
 const wheelG = document.getElementById("wheel");
