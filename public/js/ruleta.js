@@ -1,6 +1,6 @@
 const DEFAULT_ITEMS = [
   { label: "Llavero 🔑", weight: 2 },
-  { label: "Llavero 🔑", weight: 2 },
+    { label: "Libreta 📒", weight: 2 }, 
   { label: "Vuelve a girar 🎡", weight: 3 },
   { label: "Perdiste 😭", weight: 3 },
   { label: "Libreta 📒", weight: 2 },
